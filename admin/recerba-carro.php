@@ -81,7 +81,7 @@ if (strlen($_SESSION['vpmsaid']==0)) {
                             <div class="card-header">
                                 <strong>Administrar </strong> Espacios
                             </div>
-                            <div class="card-body" style="display: block;">
+                            <div class="card-body " style="display: block;">
                               <div class="row">
                               <?php
 $query = "SELECT * FROM tb_mapeos WHERE estado_espacio IN ('LIBRE', 'OCUPADO')";
@@ -105,7 +105,7 @@ if ($result) {
         echo '</button>'; // Cierra el botón
 
         // Muestra el estado debajo del botón
-        echo '<p>' . $estado_espacio . '</p>';
+        echo '<p class="text-white">' . $estado_espacio . '</p>';
 
         // Resto del código del modal aquí...
         // Agrega el contenido de la ventana modal que permitirá seleccionar la placa.
