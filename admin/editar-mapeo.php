@@ -16,12 +16,12 @@ if(isset($_POST['submit']))
     $query=mysqli_query($con, "update tb_mapeos set nro_espacio='$catname', estado_espacio='$estado' where id_map='$eid'");
     if ($query) {
     
-    echo "<script>alert('Category Details updated');</script>";
+    echo "<script>alert('Detalles de Estacionamiento actualizados');</script>";
   }
   else
     {
     
-      echo "<script>alert('Something Went Wrong. Please try again');</script>";
+      echo "<script>alert('Algo salió mal. Inténtalo de nuevo');</script>";
     }
 
   }
@@ -30,7 +30,7 @@ if(isset($_POST['submit']))
 <html class="no-js bg-dark" lang="">
 <head>
     
-    <title>Editar Categoria</title>
+    <title>Editar Estacionamiento</title>
    
 
     <link rel="apple-touch-icon" href="https://i.imgur.com/QRAUqs9.png">
@@ -71,8 +71,8 @@ if(isset($_POST['submit']))
                             <div class="page-title">
                                 <ol class="breadcrumb text-right bg-dark text-white">
                                     <li><a href="dashboard.php">Panel</a></li>
-                                    <li><a href="manage-category.php">Categoria</a></li>
-                                    <li class="active">Actualizar Categoria</li>
+                                    <li><a href="manage-category.php">Estacionamiento</a></li>
+                                    <li class="active">Administrar Estacionamiento</li>
                                 </ol>
                             </div>
                         </div>
@@ -99,7 +99,7 @@ if(isset($_POST['submit']))
                     <div class="col-lg-12 ">
                         <div class="card bg-dark text-white">
                             <div class="card-header">
-                            <strong>Actualizar  </strong>categoría
+                            <strong>Administrar  </strong>Estacionamiento
                             </div>
                             <div class="card-body card-block ">
                                 <form action="" method="post" enctype="multipart/form-data" class="form-horizontal">
@@ -115,7 +115,7 @@ while ($row=mysqli_fetch_array($ret)) {
                                     <div class="row form-group">
                                         <div class="col col-md-3"><label for="text-input" class=" form-control-label">Numero Estacionamiento</label></div>
                                         <div class="col-12 col-md-9"><input type="text" id="catename" name="catename" class="form-control bg-secondary text-white" placeholder="Categoría de vehículo" required="true" value="<?php  echo $row['nro_espacio'];?>"></div>
-                                        <div class="col col-md-3"><label for="text-input" class=" form-control-label">Estado Parqueadero</label></div>
+                                        <div class="col col-md-3"><label for="text-input" class=" form-control-label">Estado de Parqueo</label></div>
                                         <div class="col-12 col-md-9"><input type="text" id="estado" name="estado" class="form-control bg-secondary text-white" placeholder="Categoría de vehículo" required="true" value="<?php  echo $row['estado_espacio'];?>"></div>
                                     </div>
                                  
