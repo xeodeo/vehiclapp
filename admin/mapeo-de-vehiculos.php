@@ -20,7 +20,7 @@ echo "<script>window.location.href='manage-category.php'</script>";
 <html class="no-js bg-dark" lang="">
 <head>
    
-    <title>Admin Categoria</title>
+    <title>Estacionamiento</title>
    
 
 
@@ -81,7 +81,7 @@ echo "<script>window.location.href='manage-category.php'</script>";
                 <div class="col-lg-12 bg-secondary ">
                     <div class="card bg-dark text-white" >
                         <div class="card-header">
-                            <strong class="card-title">Administrar categoría</strong>
+                            <strong class="card-title">Administrar Estacionamiento</strong>
                         </div>
                         <div class="card-body">
                              <table class="table">
@@ -94,7 +94,9 @@ echo "<script>window.location.href='manage-category.php'</script>";
                     <th>Numero Parqueo</th>
                    
                           <th>Estado</th>
+                          <th>Acción</th>
                 </tr>
+                
                                         </tr>
                                         </thead>
                <?php

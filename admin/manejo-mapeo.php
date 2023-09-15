@@ -20,7 +20,7 @@ echo "<script>window.location.href='manejo-mapeo.php'</script>";
 <html class="no-js bg-dark" lang="">
 <head>
    
-    <title>Admin Categoria</title>
+    <title>Estacionamiento</title>
    
 
 
@@ -63,7 +63,7 @@ echo "<script>window.location.href='manejo-mapeo.php'</script>";
                                 <ol class="breadcrumb text-right bg-dark text-white">
                                     <li><a href="dashboard.php">Panel</a></li>
                                     <li><a href="manage-category.php">Categoria</a></li>
-                                    <li class="active">Administrar categoría</li>
+                                    <li class="active">Estacionamiento</li>
                                 </ol>
                             </div>
                         </div>
@@ -81,7 +81,7 @@ echo "<script>window.location.href='manejo-mapeo.php'</script>";
                 <div class="col-lg-12 bg-secondary ">
                     <div class="card bg-dark text-white" >
                         <div class="card-header">
-                            <strong class="card-title">Administrar categoría</strong>
+                            <strong class="card-title">Estacionamiento</strong>
                         </div>
                         <div class="card-body">
                              <table class="table">
