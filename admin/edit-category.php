@@ -98,7 +98,7 @@ if(isset($_POST['submit']))
                     <div class="col-lg-12">
                         <div class="card">
                             <div class="card-header">
-                                <strong>Update </strong> Category
+                                <strong>Update </strong> Categoria
                             </div>
                             <div class="card-body card-block">
                                 <form action="" method="post" enctype="multipart/form-data" class="form-horizontal">
