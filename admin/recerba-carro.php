@@ -12,7 +12,7 @@ if (strlen($_SESSION['vpmsaid']==0)) {
 <html class="no-js bg-dark" lang="">
 <head>
     
-    <title>VPMS - Add Category</title>
+    <title>Espacios</title>
    
 
     <link rel="apple-touch-icon" href="https://i.imgur.com/QRAUqs9.png">

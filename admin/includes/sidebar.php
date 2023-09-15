@@ -9,22 +9,22 @@
 
                 <li class="menu-item-has-children dropdown ">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
-                        aria-expanded="false"> <i class="menu-icon fa fa-table"></i>Categoría de vehículo</a>
+                        aria-expanded="false"> <i class="menu-icon ti-pencil-alt"></i>Categoría de vehículo</a>
                     <ul class="sub-menu children dropdown-menu bg-dark">
-                        <li><i class="fa fa-table"></i><a href="add-category.php">Agregar Categoria</a></li>
-                        <li><i class="fa fa-table"></i><a href="manage-category.php">Administrar categoría</a></li>
+                        <li><i class="fa ti-plus"></i><a href="add-category.php">Agregar Categoria</a></li>
+                        <li><i class="fa ti-panel"></i><a href="manage-category.php">Administrar categoría</a></li>
                     </ul>
                 </li>
                 <li>
-                    <a href="add-vehicle.php"> <i class="menu-icon ti-email"></i>Agregar Vehiculo </a>
+                    <a href="add-vehicle.php"> <i class="menu-icon ti-plus"></i>Agregar Vehiculo </a>
                 </li>
                 <li class="menu-item-has-children dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
-                        aria-expanded="false"> <i class="menu-icon fa fa-th"></i>Administrar vehículo</a>
+                        aria-expanded="false"> <i class="menu-icon ti-files"></i>Administrar vehículo</a>
                     <ul class="sub-menu children dropdown-menu bg-dark">
-                        <li><i class="menu-icon fa fa-th"></i><a href="manage-incomingvehicle.php">Administrar Entrada
+                        <li><i class="menu-icon ti-shift-right"></i><a href="manage-incomingvehicle.php">Administrar Entrada
                                 vehículo</a></li>
-                        <li><i class="menu-icon fa fa-th"></i><a href="manage-outgoingvehicle.php">Administrar Salida
+                        <li><i class="menu-icon ti-shift-left"></i><a href="manage-outgoingvehicle.php">Administrar Salida
                                 vehículo</a>
 
                         </li>
@@ -33,13 +33,13 @@
                 </li>
 
                 <li>
-                    <a href="recerba-carro.php"> <i class="menu-icon ti-user"></i>Espacios</a>
+                    <a href="recerba-carro.php"> <i class="menu-icon ti-check-box"></i>Espacios</a>
                 </li>
                 <li>
-                    <a href="creacion-espacion.php"> <i class="menu-icon ti-user"></i>Creacion de cupos</a>
+                    <a href="creacion-espacion.php"> <i class="menu-icon ti-ruler-pencil"></i>Creacion de cupos</a>
                 </li>
                 <li>
-                    <a href="mapeo-de-vehiculos.php"> <i class="menu-icon ti-user"></i>Estacionamiento</a>
+                    <a href="mapeo-de-vehiculos.php"> <i class="menu-icon ti-truck"></i>Estacionamiento</a>
                 </li>
             </ul>
         </div><!-- /.navbar-collapse -->
