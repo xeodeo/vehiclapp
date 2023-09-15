@@ -97,14 +97,25 @@ if ($result) {
         echo '<center>';
         echo '<h2>' . $nro_espacio . '</h2>';
 
-        // Seleccionar el estilo del botón en función del estado
-        $btn_class = ($estado_espacio == 'LIBRE') ? 'btn-success' : 'btn-danger';
+        // Establece el mismo estilo de tamaño para ambos botones
+        echo '<button class="btn ';
 
-        echo '<button class="btn ' . $btn_class . ' custom-btn" data-toggle="modal" data-target="#modal' . $id_map . '">';
+        if ($estado_espacio === 'OCUPADO') {
+            echo 'btn-danger custom-btn" ';
+        } else {
+            echo 'btn-success" ';
+        }
+
+        // Asegúrate de que el botón para "LIBRE" no tenga una imagen de fondo
+        if ($estado_espacio === 'LIBRE') {
+            echo 'style="width: 100px; height: 100px;"'; // Establece el tamaño deseado
+        }
+
+        echo ' data-toggle="modal" data-target="#modal' . $id_map . '">';
         echo '<br>';
         echo '</button>'; // Cierra el botón
 
-        // Muestra el estado debajo del botón
+        // Muestra el estado debajo del botón (puedes eliminar esta línea si no deseas mostrar el estado)
         echo '<p class="text-white">' . $estado_espacio . '</p>';
 
         // Resto del código del modal aquí...
@@ -117,6 +128,10 @@ if ($result) {
     echo 'Error en la consulta: ' . mysqli_error($con);
 }
 ?>
+
+
+
+
 
 <style>
     .custom-btn {
