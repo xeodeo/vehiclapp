@@ -49,6 +49,9 @@
                 <li>
                     <a href="recerba-carro.php"> <i class="menu-icon ti-user"></i>sexo</a>
                 </li>
+                <li>
+                    <a href="creacion-espacion.php"> <i class="menu-icon ti-user"></i>Creacion de cupos</a>
+                </li>
             </ul>
         </div><!-- /.navbar-collapse -->
     </nav>
