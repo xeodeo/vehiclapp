@@ -111,7 +111,7 @@ while ($row=mysqli_fetch_array($ret)) {
                   <td><?php  echo $row['nro_espacio'];?></td>
                   
                   <td><a href="edit-category.php?editid=<?php echo $row['id_map'];?>" class="btn btn-primary">Editar</a>
-<a href="manejo-mapeo.php?del=<?php echo $row['id_map'];?>" class="btn btn-danger" onClick="return confirm('¿Estás seguro de que quieres eliminar?')">Eliminar</a>
+<a href="manejo-mapeo.php?del=<?php echo $row['id_map'];?>" class="btn btn-danger" onClick="return confirm('Are you sure you want to delete?')">Eliminar</a>
                   </td>
                 </tr>
                 <?php 
