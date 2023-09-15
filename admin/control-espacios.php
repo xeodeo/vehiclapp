@@ -12,7 +12,7 @@ $fechaCreacion = date("Y-m-d H:i:s");
 
 // Sentencia SQL para insertar los datos en la tabla
 $sql = "INSERT INTO tb_mapeos (nro_espacio, estado_espacio, obs, estado, fyh_creacion)
-        VALUES ('$nroEspacio', '$estadoEspacio', '$obs', 'Activo', '$fechaCreacion')";
+        VALUES ('$nroEspacio', '$estadoEspacio', '$obs', '1', '$fechaCreacion')";
 
 if ($con->query($sql) === TRUE) {
     echo "Los datos se han guardado correctamente.";
