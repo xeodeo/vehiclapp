@@ -98,7 +98,7 @@ if ($result) {
         echo '<h2>' . $nro_espacio . '</h2>';
 
         // Seleccionar el estilo del botón en función del estado
-        $btn_class = ($estado_espacio == 'LIBRE') ? 'btn-success' : 'btn-warning';
+        $btn_class = ($estado_espacio == 'LIBRE') ? 'btn-success' : 'btn-danger';
 
         echo '<button class="btn ' . $btn_class . ' custom-btn" data-toggle="modal" data-target="#modal' . $id_map . '">';
         echo '<p>' . $estado_espacio . '</p>';
