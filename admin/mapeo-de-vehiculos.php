@@ -9,7 +9,7 @@ if (strlen($_SESSION['vpmsaid']==0)) {
 // For deleting    
 if($_GET['del']){
 $catid=$_GET['del'];
-mysqli_query($con,"delete from tb_mapeos where ID ='$catid'");
+mysqli_query($con,"delete from tb_mapeos where id_map ='$catid'");
 echo "<script>alert('Data Deleted');</script>";
 echo "<script>window.location.href='manage-category.php'</script>";
           }
@@ -112,8 +112,8 @@ while ($row=mysqli_fetch_array($ret)) {
                   <td><?php  echo $row['estado_espacio'];?></td>
 
                   
-                  <td><a href="edit-category.php?editid=<?php echo $row['ID'];?>" class="btn btn-primary">Editar</a>
-<a href="manejo-mapeo.php?del=<?php echo $row['ID'];?>" class="btn btn-danger" onClick="return confirm('Are you sure you want to delete?')">Eliminar</a>
+                  <td><a href="editar-mapeo.php?editid=<?php echo $row['id_map'];?>" class="btn btn-primary">Editar</a>
+<a href="manejo-mapeo.php?del=<?php echo $row['id_map'];?>" class="btn btn-danger" onClick="return confirm('Are you sure you want to delete?')">Eliminar</a>
                   </td>
                 </tr>
                 <?php 
