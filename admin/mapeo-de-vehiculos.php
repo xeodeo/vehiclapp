@@ -62,8 +62,8 @@ echo "<script>window.location.href='manage-category.php'</script>";
                             <div class="page-title ">
                                 <ol class="breadcrumb text-right bg-dark text-white">
                                     <li><a href="dashboard.php">Panel</a></li>
-                                    <li><a href="manage-category.php">Categoria</a></li>
-                                    <li class="active">Administrar categoría</li>
+                                    <li><a href="manage-category.php">Estacionamiento</a></li>
+                                    <li class="active">Administrar Estacionamiento</li>
                                 </ol>
                             </div>
                         </div>
