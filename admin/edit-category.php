@@ -55,23 +55,23 @@ if(isset($_POST['submit']))
 
    <?php include_once('includes/header.php');?>
 
-        <div class="breadcrumbs">
-            <div class="breadcrumbs-inner">
+   <div class="breadcrumbs ">
+            <div class="breadcrumbs-inner bg-dark">
                 <div class="row m-0">
                     <div class="col-sm-4">
-                        <div class="page-header float-left">
+                        <div class="page-header float-left bg-dark text-white">
                             <div class="page-title">
-                                <h1>pou</h1>
+                                <h1>Panel</h1>
                             </div>
                         </div>
                     </div>
                     <div class="col-sm-8">
-                        <div class="page-header float-right">
+                        <div class="page-header float-right bg-dark">
                             <div class="page-title">
-                                <ol class="breadcrumb text-right">
-                                    <li><a href="dashboard.php">Dashboard</a></li>
-                                    <li><a href="manage-category.php">Category</a></li>
-                                    <li class="active">Update Category</li>
+                                <ol class="breadcrumb text-right bg-dark text-white">
+                                    <li><a href="dashboard.php">Panel</a></li>
+                                    <li><a href="manage-category.php">Categoria</a></li>
+                                    <li class="active">Actualizar Categoria</li>
                                 </ol>
                             </div>
                         </div>
@@ -80,7 +80,7 @@ if(isset($_POST['submit']))
             </div>
         </div>
 
-        <div class="content">
+        <div class="content bg-secondary">
             <div class="animated fadeIn">
 
 
@@ -95,14 +95,14 @@ if(isset($_POST['submit']))
 
               
 
-                    <div class="col-lg-12">
-                        <div class="card">
+                    <div class="col-lg-12 ">
+                        <div class="card bg-dark text-white">
                             <div class="card-header">
-                                <strong>Update </strong> Categoria
+                            <strong>Actualizar  </strong>categoría
                             </div>
-                            <div class="card-body card-block">
+                            <div class="card-body card-block ">
                                 <form action="" method="post" enctype="multipart/form-data" class="form-horizontal">
-                                    
+                                     
                      
                      <?php
  $cid=$_GET['editid'];
@@ -112,13 +112,13 @@ while ($row=mysqli_fetch_array($ret)) {
 
 ?>              
                                     <div class="row form-group">
-                                        <div class="col col-md-3"><label for="text-input" class=" form-control-label">Category Name</label></div>
-                                        <div class="col-12 col-md-9"><input type="text" id="catename" name="catename" class="form-control" placeholder="Vehicle Category" required="true" value="<?php  echo $row['TipoVehiculo'];?>"></div>
+                                        <div class="col col-md-3"><label for="text-input" class=" form-control-label">Nombe de Categoria</label></div>
+                                        <div class="col-12 col-md-9"><input type="text" id="catename" name="catename" class="form-control bg-secondary text-white" placeholder="Categoría de vehículo" required="true" value="<?php  echo $row['TipoVehiculo'];?>"></div>
                                     </div>
                                  
                                     <?php } ?>
                                     
-                                   <p style="text-align: center;"> <button type="submit" class="btn btn-primary btn-sm" name="submit" >Update</button></p>
+                                   <p style="text-align: center;"> <button type="submit" class="btn btn-primary btn-sm" name="submit" >Actualizar</button></p>
                                 </form>
                             </div>
                             
@@ -139,7 +139,7 @@ while ($row=mysqli_fetch_array($ret)) {
         </div><!-- .animated -->
     </div><!-- .content -->
 
-    <div class="clearfix"></div>
+    <div class="clearfix bg-dark"></div>
 
    <?php include_once('includes/footer.php');?>
 
