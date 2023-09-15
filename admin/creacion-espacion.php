@@ -100,7 +100,7 @@ if (strlen($_SESSION['vpmsaid']==0)) {
                                 </div>
                                 <div class="col-md-12">
                                     <div class="form group">
-                                        <label for="">Oservaciones</label>
+                                        <label for="">Observaciones</label>
                                         <input type="text" id="Oservaciones" class="form-control">
                                     </div>
                                     <hr>
