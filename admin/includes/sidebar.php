@@ -31,21 +31,7 @@
 
                     </ul>
                 </li>
-                <li class="menu-item-has-children dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
-                        aria-expanded="false"> <i class="menu-icon fa fa-th"></i>Reportes</a>
-                    <ul class="sub-menu children dropdown-menu bg-dark">
-                        <li><i class="menu-icon fa fa-th"></i><a href="bwdates-report-ds.php">Informe Fecha Reportes</a>
-                        </li>
 
-                    </ul>
-                </li>
-                <li>
-                    <a href="search-vehicle.php"> <i class="menu-icon fa fa-search"></i>Buscar Vehiculo</a>
-                </li>
-                <li>
-                    <a href="reg-users.php"> <i class="menu-icon ti-user"></i>Registro Usuarios </a>
-                </li>
                 <li>
                     <a href="recerba-carro.php"> <i class="menu-icon ti-user"></i>sexo</a>
                 </li>

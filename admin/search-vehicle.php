@@ -11,7 +11,7 @@ if (strlen($_SESSION['vpmsaid']==0)) {
   ?>
 <!doctype html>
 
-<html class="no-js" lang="">
+<html class="no-js bg-dark" lang="">
 <head>
    
     <title>VPMS - Search Vehicle</title>
@@ -43,23 +43,23 @@ if (strlen($_SESSION['vpmsaid']==0)) {
 
      <?php include_once('includes/header.php');?>
 
-        <div class="breadcrumbs">
-            <div class="breadcrumbs-inner">
+     <div class="breadcrumbs bg-dark">
+            <div class="breadcrumbs-inner bg-dark">
                 <div class="row m-0">
                     <div class="col-sm-4">
-                        <div class="page-header float-left">
+                        <div class="page-header float-left bg-dark text-white">
                             <div class="page-title">
-                                <h1>Dashboard</h1>
+                                <h1>Panel</h1>
                             </div>
                         </div>
                     </div>
                     <div class="col-sm-8">
-                        <div class="page-header float-right">
+                        <div class="page-header float-right bg-dark">
                             <div class="page-title">
-                                <ol class="breadcrumb text-right">
-                                    <li><a href="dashboard.php">Dashboard</a></li>
-                                    <li><a href="search-vehicle.php">Search Vehicle</a></li>
-                                    <li class="active">Search Vehicle</li>
+                                <ol class="breadcrumb text-right  bg-dark text-white">
+                                    <li><a href="dashboard.php">Panel</a></li>
+                                    <li><a href="search-vehicle.php">Buscar Vehiculo</a></li>
+                                    <li class="active">Buscar Vehiculo</li>
                                 </ol>
                             </div>
                         </div>
@@ -68,7 +68,7 @@ if (strlen($_SESSION['vpmsaid']==0)) {
             </div>
         </div>
 
-        <div class="content">
+        <div class="content bg-secondary">
             <div class="animated fadeIn">
                 <div class="row">
                    
@@ -76,21 +76,21 @@ if (strlen($_SESSION['vpmsaid']==0)) {
 
                 <div class="col-lg-12">
                     <div class="card">
-                        <div class="card-header">
-                            <strong class="card-title">Search Vehicle</strong>
+                        <div class="card-header bg-dark text-white">
+                            <strong class="card-title">Buscar Vehículo</strong>
                         </div>
-                        <div class="card-body">
+                        <div class="card-body bg-dark text-white">
 <form action="" method="post" enctype="multipart/form-data" class="form-horizontal" name="search">
                                     
                                    
                                     <div class="row form-group">
-                                        <div class="col col-md-3"><label for="text-input" class=" form-control-label">Search By Parking Number</label></div>
-                                        <div class="col-12 col-md-9"><input type="text" id="searchdata" name="searchdata" class="form-control"  required="required" autofocus="autofocus" ></div>
+                                        <div class="col col-md-3"><label for="text-input" class=" form-control-label">Buscar por número de estacionamiento</label></div>
+                                        <div class="col-12 col-md-9"><input type="text" id="searchdata" name="searchdata" class="form-control bg-secondary text-white"  required="required" autofocus="autofocus" ></div>
                                     </div>
                                  
                                     
                                     
-                                   <p style="text-align: center;"> <button type="submit" class="btn btn-primary btn-sm" name="search" >Search</button></p>
+                                   <p style="text-align: center;"> <button type="submit" class="btn btn-primary btn-sm" name="search" >Buscar</button></p>
                                 </form>
 
  <?php
@@ -99,19 +99,19 @@ if(isset($_POST['search']))
 
 $sdata=$_POST['searchdata'];
   ?>
-  <h4 align="center">Result against "<?php echo $sdata;?>" keyword </h4> 
+  <h4 align="center">Resultado en contra "<?php echo $sdata;?>" palabra clave </h4> 
                              <table class="table">
                 <thead>
                                         <tr>
                                             <tr>
-                  <th>S.NO</th>
+                  <th>N°.</th>
             
                  
-                    <th>Parking Number</th>
-                    <th>Owner Name</th>
-                    <th>Vehicle Reg. Number</th>
+                    <th>Número de estacionamiento</th>
+                    <th>Nombre del Dueño</th>
+                    <th>Placa</th>
                    
-                          <th>Action</th>
+                          <th>Acción</th>
                 </tr>
                                         </tr>
                                         </thead>
@@ -123,6 +123,7 @@ $cnt=1;
 while ($row=mysqli_fetch_array($ret)) {
 
 ?>
+
               
                 <tr>
                   <td><?php echo $cnt;?></td>
@@ -132,13 +133,13 @@ while ($row=mysqli_fetch_array($ret)) {
                   <td><?php  echo $row['OwnerName'];?></td>
                   <td><?php  echo $row['RegistrationNumber'];?></td>
                   
-                  <td><a href="view-incomingvehicle-detail.php?viewid=<?php echo $row['ID'];?>">View</a></td>
+                  <td><a href="view-incomingvehicle-detail.php?viewid=<?php echo $row['ID'];?>">Ver</a></td>
                 </tr>
                 <?php 
 $cnt=$cnt+1;
 } } else { ?>
      <tr>
-    <td colspan="8"> No record found against this search</td>
+    <td colspan="8">No se encontró ningún registro en esta búsqueda</td>
 
   </tr>
    
@@ -155,7 +156,7 @@ $cnt=$cnt+1;
     </div><!-- .animated -->
 </div><!-- .content -->
 
-<div class="clearfix"></div>
+<div class="clearfix bg-dark"></div>
 
 <?php include_once('includes/footer.php');?>
 
