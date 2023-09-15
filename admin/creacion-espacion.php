@@ -86,7 +86,7 @@ if (strlen($_SESSION['vpmsaid']==0)) {
                                 <div class="col-md-6">
                                     <div class="form group">
                                         <label for="">Numero de espacio</label>
-                                        <input type="number" class="form-control">
+                                        <input type="number" class="form-control" id="nro_espacio">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
@@ -113,7 +113,7 @@ if (strlen($_SESSION['vpmsaid']==0)) {
                                         <a href="" class="btn btn-danger btn-block">CANCELAR</a>
                                     </div>
                                     <div class="col-md-6">
-                                        <button class="btn btn-primary btn-block">ACEPTAR</button>
+                                        <button class="btn btn-primary btn-block" id="btn-registrar">ACEPTAR</button>
                                     </div>
                                 </div>
 
@@ -160,3 +160,19 @@ if (strlen($_SESSION['vpmsaid']==0)) {
 </body>
 </html>
 <?php }  ?>
+
+<script>
+    $('btn-registrar').click(function () {
+        var nro_espacio = $('#nro_espacio').val();
+
+        if(nombre == ""){
+            alert('Debe de llenar el campo ');
+            $('#nombre').focus();
+        }else{
+            var url = 'controller_create.php';
+            $.get(url,{nombre:nombre},function (datos){
+                $('respuesta').html(datos);
+            })
+        }
+    })
+</script>
