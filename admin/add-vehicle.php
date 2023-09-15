@@ -31,10 +31,10 @@ echo "<script>window.location.href ='manage-incomingvehicle.php'</script>";
 }
   ?>
 <!doctype html>
-<html class="no-js" lang="">
+<html class="no-js bg-dark" lang="">
 <head>
     
-    <title>VPMS - Add Vehicle</title>
+    <title>Agregar Vehiculo</title>
    
 
     <link rel="apple-touch-icon" href="https://i.imgur.com/QRAUqs9.png">
@@ -60,23 +60,23 @@ echo "<script>window.location.href ='manage-incomingvehicle.php'</script>";
 
    <?php include_once('includes/header.php');?>
 
-        <div class="breadcrumbs">
-            <div class="breadcrumbs-inner">
+   <div class="breadcrumbs bg-dark">
+            <div class="breadcrumbs-inner bg-dark">
                 <div class="row m-0">
                     <div class="col-sm-4">
-                        <div class="page-header float-left">
+                        <div class="page-header float-left bg-dark text-white">
                             <div class="page-title">
-                                <h1>Dashboard</h1>
+                                <h1>Panel</h1>
                             </div>
                         </div>
                     </div>
                     <div class="col-sm-8">
-                        <div class="page-header float-right">
+                        <div class="page-header float-right bg-dark">
                             <div class="page-title">
-                                <ol class="breadcrumb text-right">
-                                    <li><a href="dashboard.php">Dashboard</a></li>
-                                    <li><a href="add-vehicle.php">Vehicle</a></li>
-                                    <li class="active">Add Vehicle</li>
+                                <ol class="breadcrumb text-right  bg-dark text-white">
+                                    <li><a href="dashboard.php">Panel</a></li>
+                                    <li><a href="add-vehicle.php">Vehiculo</a></li>
+                                    <li class="active">Agregar Vehiculo</li>
                                 </ol>
                             </div>
                         </div>
@@ -85,7 +85,7 @@ echo "<script>window.location.href ='manage-incomingvehicle.php'</script>";
             </div>
         </div>
 
-        <div class="content">
+        <div class="content bg-secondary">
             <div class="animated fadeIn">
 
 
@@ -102,48 +102,48 @@ echo "<script>window.location.href ='manage-incomingvehicle.php'</script>";
 
                     <div class="col-lg-12">
                         <div class="card">
-                            <div class="card-header">
-                                <strong>Add </strong> Vehicle
+                            <div class="card-header bg-dark text-white">
+                                <strong>Agregar </strong> Vehiculo
                             </div>
-                            <div class="card-body card-block">
+                            <div class="card-body card-block bg-dark text-white">
                                 <form action="" method="post" enctype="multipart/form-data" class="form-horizontal">
                                     
 
-                                    <div class="row form-group">
-                                        <div class="col col-md-3"><label for="select" class=" form-control-label">Select</label></div>
-                                        <div class="col-12 col-md-9">
-                                            <select name="catename" id="catename" class="form-control">
-                                                <option value="0">Select Category</option>
+                                    <div class="row form-group bg-dark text-white">
+                                        <div class="col col-md-3 "><label for="select" class=" form-control-label ">Seleccionar</label></div>
+                                        <div class="col-12 col-md-9 bg-dark">
+                                            <select name="catename " id="catename" class="form-control ">
+                                                <option value="0">Seleccionar Categoria</option>
                                                 <?php $query=mysqli_query($con,"select * from tblcategoria");
               while($row=mysqli_fetch_array($query))
               {
               ?>    
                                                  <option value="<?php echo $row['TipoVehiculo'];?>"><?php echo $row['TipoVehiculo'];?></option>
                   <?php } ?> 
-                                            </select>
+                  </select>
                                         </div>
                                     </div>
                                     <div class="row form-group">
-                                        <div class="col col-md-3"><label for="text-input" class=" form-control-label">Vehicle Company</label></div>
-                                        <div class="col-12 col-md-9"><input type="text" id="vehcomp" name="vehcomp" class="form-control" placeholder="Vehicle Company" required="true"></div>
+                                        <div class="col col-md-3"><label for="text-input" class=" form-control-label">Empresa de vehículos</label></div>
+                                        <div class="col-12 col-md-9"><input type="text" id="vehcomp" name="vehcomp" class="form-control " placeholder="Empresa de vehículos" required="true"></div>
                                     </div>
                                  
                                      <div class="row form-group">
-                                        <div class="col col-md-3"><label for="text-input" class=" form-control-label">Registration Number</label></div>
-                                        <div class="col-12 col-md-9"><input type="text" id="vehreno" name="vehreno" class="form-control" placeholder="Registration Number" required="true"></div>
+                                        <div class="col col-md-3"><label for="text-input" class=" form-control-label">Número de registro</label></div>
+                                        <div class="col-12 col-md-9"><input type="text" id="vehreno" name="vehreno" class="form-control " placeholder="Número de registro" required="true"></div>
                                     </div>
                                     <div class="row form-group">
-                                        <div class="col col-md-3"><label for="text-input" class=" form-control-label">Owner Name</label></div>
-                                        <div class="col-12 col-md-9"><input type="text" id="ownername" name="ownername" class="form-control" placeholder="Owner Name" required="true"></div>
+                                        <div class="col col-md-3"><label for="text-input" class=" form-control-label">Nombre del dueño</label></div>
+                                        <div class="col-12 col-md-9"><input type="text" id="ownername" name="ownername" class="form-control " placeholder="Nombre del dueño" required="true"></div>
                                     </div>
                                      <div class="row form-group">
-                                        <div class="col col-md-3"><label for="text-input" class=" form-control-label">Owner Contact Number</label></div>
-                                        <div class="col-12 col-md-9"><input type="text" id="ownercontno" name="ownercontno" class="form-control" placeholder="Owner Contact Number" required="true" maxlength="10" pattern="[0-9]+"></div>
+                                        <div class="col col-md-3"><label for="text-input" class=" form-control-label">Número de contacto del propietario</label></div>
+                                        <div class="col-12 col-md-9"><input type="text" id="ownercontno" name="ownercontno" class="form-control " placeholder="Número de contacto del propietario" required="true" maxlength="10" pattern="[0-9]+"></div>
                                     </div>
                                    
                                     
                                     
-                                   <p style="text-align: center;"> <button type="submit" class="btn btn-primary btn-sm" name="submit" >Add</button></p>
+                                   <p style="text-align: center;"> <button type="submit" class="btn btn-primary btn-sm" name="submit" >Agregar</button></p>
                                 </form>
                             </div>
                             
@@ -164,7 +164,7 @@ echo "<script>window.location.href ='manage-incomingvehicle.php'</script>";
         </div><!-- .animated -->
     </div><!-- .content -->
 
-    <div class="clearfix"></div>
+    <div class="clearfix bg-dark"></div>
 
    <?php include_once('includes/footer.php');?>
 
