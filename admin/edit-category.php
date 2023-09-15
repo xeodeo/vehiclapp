@@ -26,7 +26,7 @@ if(isset($_POST['submit']))
   }
   ?>
 <!doctype html>
-<html class="no-js" lang="">
+<html class="no-js bg-dark" lang="">
 <head>
     
     <title>VPMS - Manage Category</title>
@@ -61,7 +61,7 @@ if(isset($_POST['submit']))
                     <div class="col-sm-4">
                         <div class="page-header float-left">
                             <div class="page-title">
-                                <h1>Dashboard</h1>
+                                <h1>Panel</h1>
                             </div>
                         </div>
                     </div>
