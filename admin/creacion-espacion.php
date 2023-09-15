@@ -52,8 +52,8 @@ if (strlen($_SESSION['vpmsaid']==0)) {
                             <div class="page-title ">
                                 <ol class="breadcrumb text-right bg-dark text-white">
                                     <li><a href="dashboard.php">Panel</a></li>
-                                    <li><a href="add-category.php">sikas</a></li>
-                                    <li class="active">Agregar Categoria</li>
+                                    <li><a href="add-category.php">Cupos</a></li>
+                                    <li class="active">Agregar Cupos</li>
                                 </ol>
                             </div>
                         </div>
