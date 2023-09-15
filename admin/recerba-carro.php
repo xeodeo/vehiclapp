@@ -1,6 +1,7 @@
 <?php
 session_start();
 error_reporting(0);
+include('includes/config.php');
 include('includes/dbconnection.php');
 if (strlen($_SESSION['vpmsaid']==0)) {
   header('location:logout.php');
@@ -82,15 +83,51 @@ if (strlen($_SESSION['vpmsaid']==0)) {
                             </div>
                             <div class="card-body" style="display: block;">
                               <div class="row">
-                                <?php
-                                
-                                ?>
-                                <div class="col-md-1">
-                                  <center>
-                                    <h2>1</h2>
-                                    <img src="<?php echo $URL;?>images/auto1.png" alt="">
-                                  </center>
-                                </div>
+<?php
+$query = "SELECT * FROM tb_mapeos WHERE estado_espacio IN ('LIBRE', 'OCUPADO')";
+$result = mysqli_query($con, $query);
+
+if ($result) {
+    while ($row = mysqli_fetch_assoc($result)) {
+        $id_map = $row['id_map'];
+        $nro_espacio = $row['nro_espacio'];
+        $estado_espacio = $row['estado_espacio'];
+
+        echo '<div class="col">';
+        echo '<center>';
+        echo '<h2>' . $nro_espacio . '</h2>';
+
+        // Seleccionar el estilo del botón en función del estado
+        $btn_class = ($estado_espacio == 'LIBRE') ? 'btn-success' : 'btn-warning';
+
+        echo '<button class="btn ' . $btn_class . ' custom-btn" data-toggle="modal" data-target="#modal' . $id_map . '">';
+        echo '<p>' . $estado_espacio . '</p>';
+        echo '</button>';
+
+        
+
+        // Resto del código del modal aquí...
+        // Agrega el contenido de la ventana modal que permitirá seleccionar la placa.
+
+        echo '</center>';
+        echo '</div>';
+    }
+} else {
+    echo 'Error en la consulta: ' . mysqli_error($con);
+}
+?>
+<style>
+    .custom-btn {
+        width: 100%;
+        height: 114px;
+        background-image: url('images/auto1.png'); /* Ruta de la imagen del auto */
+        background-size: contain; /* Ajusta la imagen al tamaño del botón */
+        background-repeat: no-repeat; /* Evita la repetición de la imagen */
+        background-position: center center; /* Centra la imagen horizontal y verticalmente */
+        color: #fff; /* Color del texto */
+    }
+</style>
+
                               </div>
 
                             </div>
