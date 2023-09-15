@@ -150,22 +150,52 @@ if (strlen($_SESSION['vpmsaid']==0)) {
 <!-- Right Panel -->
 
 <!-- Scripts -->
+
+
+<!-- Agrega esto antes del cierre del </body> -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
-    $('#btn-registrar').click(function (event) {
-        event.preventDefault(); // Prevenir el comportamiento predeterminado del botón
+    $(document).ready(function () {
+        $("#btn-registrar").click(function () {
+            // Obtener los valores del formulario
+            var nroEspacio = $("#nro_espacio").val();
+            var estadoEspacio = $("#estado_espacio").val();
+            var obs = $("#Oservaciones").val();
 
-        var nro_espacio = $('#nro_espacio').val();
-        var estado_espacio = $('#estado_espacio').val();
-        var Oservaciones = $('#Oservaciones').val();
+            // Verificar si el campo "Número de espacio" está vacío
+            if (nroEspacio === "") {
+                alert("El campo 'Número de espacio' no puede estar vacío.");
+                $("#nro_espacio").focus(); // Enfocar el campo
+                return; // Detener la ejecución del script si el campo está vacío
+            }
 
-        if (nro_espacio == "") {
-            alert('Debe llenar el campo "Numero de espacio"');
-            $('#nro_espacio').focus();
-        }
-    })
+            // Realizar la solicitud AJAX
+            $.ajax({
+                type: "POST",
+                url: "control-espacios.php", // Ruta al archivo PHP
+                data: {
+                    nro_espacio: nroEspacio,
+                    estado_espacio: estadoEspacio,
+                    obs: obs
+                },
+                success: function (response) {
+                    // Manejar la respuesta del servidor (puede ser un mensaje de éxito o error)
+                    alert(response); // Mostrar la respuesta en una alerta (puedes cambiar esto)
+                    
+                    // Limpiar los campos después de guardar los datos
+                    $("#nro_espacio").val("");
+                    $("#estado_espacio").val("LIBRE");
+                    $("#Oservaciones").val("");
+                }
+            });
+        });
+    });
 </script>
-<script src="https://cdn.jsdelivr.net/npm/jquery@2.2.4/dist/jquery.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.4/dist/umd/popper.min.js"></script>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@2.2.4/dist/jquery.min.js"></sodium_crypto_sign_ed25519_pk_to_curve25519>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.4/dist/umd/popper.min.js"></>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/jquery-match-height@0.7.2/dist/jquery.matchHeight.min.js"></script>
 <script src="assets/js/main.js"></script>
