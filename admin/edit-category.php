@@ -106,14 +106,14 @@ if(isset($_POST['submit']))
                      
                      <?php
  $cid=$_GET['editid'];
-$ret=mysqli_query($con,"select * from  tblcategory where ID='$cid'");
+$ret=mysqli_query($con,"select * from  tblcategoria where ID='$cid'");
 $cnt=1;
 while ($row=mysqli_fetch_array($ret)) {
 
 ?>              
                                     <div class="row form-group">
                                         <div class="col col-md-3"><label for="text-input" class=" form-control-label">Category Name</label></div>
-                                        <div class="col-12 col-md-9"><input type="text" id="catename" name="catename" class="form-control" placeholder="Vehicle Category" required="true" value="<?php  echo $row['VehicleCat'];?>"></div>
+                                        <div class="col-12 col-md-9"><input type="text" id="catename" name="catename" class="form-control" placeholder="Vehicle Category" required="true" value="<?php  echo $row['TipoVehiculo'];?>"></div>
                                     </div>
                                  
                                     <?php } ?>

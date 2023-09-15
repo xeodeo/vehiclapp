@@ -8,7 +8,7 @@ if (strlen($_SESSION['vpmsaid']==0)) {
 
   ?>
 <!doctype html>
-<html class="no-js bg-dark" lang="">
+<html class="bg-dark" lang="">
 <head>
     
     <title>VPMS - Add Category</title>
@@ -92,7 +92,7 @@ if (strlen($_SESSION['vpmsaid']==0)) {
                                 <div class="col-md-6">
                                 <div class="form group">
                                         <label for="">Estado del espacio</label>
-                                        <select name="" id="" class="form-control">
+                                        <select name="" id="estado_espacio" class="form-control">
                                             <option value="LIBRE">LIBRE</option>
                                             <option value="OCUPADO">OCUPADO</option>
                                         </select>
@@ -100,8 +100,8 @@ if (strlen($_SESSION['vpmsaid']==0)) {
                                 </div>
                                 <div class="col-md-12">
                                     <div class="form group">
-                                        <label for="">Oservacions</label>
-                                        <input type="text" class="form-control">
+                                        <label for="">Oservaciones</label>
+                                        <input type="text" id="Oservaciones" class="form-control">
                                     </div>
                                     <hr>
                                     
@@ -150,6 +150,20 @@ if (strlen($_SESSION['vpmsaid']==0)) {
 <!-- Right Panel -->
 
 <!-- Scripts -->
+<script>
+    $('#btn-registrar').click(function (event) {
+        event.preventDefault(); // Prevenir el comportamiento predeterminado del botón
+
+        var nro_espacio = $('#nro_espacio').val();
+        var estado_espacio = $('#estado_espacio').val();
+        var Oservaciones = $('#Oservaciones').val();
+
+        if (nro_espacio == "") {
+            alert('Debe llenar el campo "Numero de espacio"');
+            $('#nro_espacio').focus();
+        }
+    })
+</script>
 <script src="https://cdn.jsdelivr.net/npm/jquery@2.2.4/dist/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.4/dist/umd/popper.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js"></script>
@@ -157,22 +171,9 @@ if (strlen($_SESSION['vpmsaid']==0)) {
 <script src="assets/js/main.js"></script>
 
 
+
+
 </body>
 </html>
 <?php }  ?>
 
-<script>
-    $('btn-registrar').click(function () {
-        var nro_espacio = $('#nro_espacio').val();
-
-        if(nombre == ""){
-            alert('Debe de llenar el campo ');
-            $('#nombre').focus();
-        }else{
-            var url = 'controller_create.php';
-            $.get(url,{nombre:nombre},function (datos){
-                $('respuesta').html(datos);
-            })
-        }
-    })
-</script>
