@@ -33,7 +33,7 @@
                 </li>
 
                 <li>
-                    <a href="recerba-carro.php"> <i class="menu-icon ti-user"></i>sexo</a>
+                    <a href="recerba-carro.php"> <i class="menu-icon ti-user"></i>Espacios</a>
                 </li>
                 <li>
                     <a href="creacion-espacion.php"> <i class="menu-icon ti-user"></i>Creacion de cupos</a>

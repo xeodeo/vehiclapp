@@ -52,8 +52,8 @@ if (strlen($_SESSION['vpmsaid']==0)) {
                             <div class="page-title ">
                                 <ol class="breadcrumb text-right bg-dark text-white">
                                     <li><a href="dashboard.php">Panel</a></li>
-                                    <li><a href="add-category.php">sikas</a></li>
-                                    <li class="active">Agregar Categoria</li>
+                                    <li><a href="add-category.php">Espacios</a></li>
+                                    <li class="active">Administrar Espacios</li>
                                 </ol>
                             </div>
                         </div>
@@ -79,7 +79,7 @@ if (strlen($_SESSION['vpmsaid']==0)) {
                     <div class="col-lg-12">
                         <div class="card bg-dark text-white">
                             <div class="card-header">
-                                <strong>Agregar </strong> Categoria
+                                <strong>Administrar </strong> Espacios
                             </div>
                             <div class="card-body" style="display: block;">
                               <div class="row">
