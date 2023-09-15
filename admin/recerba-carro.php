@@ -83,7 +83,7 @@ if (strlen($_SESSION['vpmsaid']==0)) {
                             </div>
                             <div class="card-body" style="display: block;">
                               <div class="row">
-<?php
+                              <?php
 $query = "SELECT * FROM tb_mapeos WHERE estado_espacio IN ('LIBRE', 'OCUPADO')";
 $result = mysqli_query($con, $query);
 
@@ -101,10 +101,11 @@ if ($result) {
         $btn_class = ($estado_espacio == 'LIBRE') ? 'btn-success' : 'btn-danger';
 
         echo '<button class="btn ' . $btn_class . ' custom-btn" data-toggle="modal" data-target="#modal' . $id_map . '">';
-        echo '<p>' . $estado_espacio . '</p>';
-        echo '</button>';
+        echo '<br>';
+        echo '</button>'; // Cierra el botón
 
-        
+        // Muestra el estado debajo del botón
+        echo '<p>' . $estado_espacio . '</p>';
 
         // Resto del código del modal aquí...
         // Agrega el contenido de la ventana modal que permitirá seleccionar la placa.
@@ -116,6 +117,7 @@ if ($result) {
     echo 'Error en la consulta: ' . mysqli_error($con);
 }
 ?>
+
 <style>
     .custom-btn {
         width: 100%;
