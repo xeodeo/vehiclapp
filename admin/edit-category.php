@@ -29,7 +29,7 @@ if(isset($_POST['submit']))
 <html class="no-js bg-dark" lang="">
 <head>
     
-    <title>VPMS - Manage Category</title>
+    <title>Editar Categoria</title>
    
 
     <link rel="apple-touch-icon" href="https://i.imgur.com/QRAUqs9.png">
