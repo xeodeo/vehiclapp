@@ -39,7 +39,7 @@
                     <a href="creacion-espacion.php"> <i class="menu-icon ti-user"></i>Creacion de cupos</a>
                 </li>
                 <li>
-                    <a href="mapeo-de-vehiculos.php"> <i class="menu-icon ti-user"></i>mapeo-de-vehiculos</a>
+                    <a href="mapeo-de-vehiculos.php"> <i class="menu-icon ti-user"></i>Estacionamiento</a>
                 </li>
             </ul>
         </div><!-- /.navbar-collapse -->
