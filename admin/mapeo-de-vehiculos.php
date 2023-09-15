@@ -94,6 +94,7 @@ echo "<script>window.location.href='manage-category.php'</script>";
                     <th>Numero Parqueo</th>
                    
                           <th>Estado</th>
+                          <th>Acción</th>
                 </tr>
                                         </tr>
                                         </thead>
@@ -113,7 +114,7 @@ while ($row=mysqli_fetch_array($ret)) {
 
                   
                   <td><a href="edit-category.php?editid=<?php echo $row['ID'];?>" class="btn btn-primary">Editar</a>
-<a href="manejo-mapeo.php?del=<?php echo $row['ID'];?>" class="btn btn-danger" onClick="return confirm('Are you sure you want to delete?')">Eliminar</a>
+<a href="manejo-mapeo.php?del=<?php echo $row['ID'];?>" class="btn btn-danger" onClick="return confirm('¿Estás seguro de que quieres eliminar?')">Eliminar</a>
                   </td>
                 </tr>
                 <?php 
