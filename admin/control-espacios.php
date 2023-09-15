@@ -7,9 +7,12 @@ $nroEspacio = $_POST['nro_espacio'];
 $estadoEspacio = $_POST['estado_espacio'];
 $obs = $_POST['obs'];
 
+// Obtener la fecha y hora actual
+$fechaCreacion = date("Y-m-d H:i:s");
+
 // Sentencia SQL para insertar los datos en la tabla
-$sql = "INSERT INTO tb_mapeos (nro_espacio, estado_espacio, obs, estado)
-        VALUES ('$nroEspacio', '$estadoEspacio', '$obs', 'Activo')";
+$sql = "INSERT INTO tb_mapeos (nro_espacio, estado_espacio, obs, estado, fyh_creacion)
+        VALUES ('$nroEspacio', '$estadoEspacio', '$obs', 'Activo', '$fechaCreacion')";
 
 if ($con->query($sql) === TRUE) {
     echo "Los datos se han guardado correctamente.";
