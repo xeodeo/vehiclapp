@@ -83,7 +83,6 @@ if (strlen($_SESSION['vpmsaid']==0)) {
                             </div>
                             <div class="card-body " style="display: block;">
                               <div class="row">
-
                               <?php
 $query = "SELECT * FROM tb_mapeos WHERE estado_espacio IN ('LIBRE', 'OCUPADO')";
 $result = mysqli_query($con, $query);
@@ -107,14 +106,17 @@ if ($result) {
             echo 'btn-success" ';
         }
 
-        // Añade los atributos data-toggle y data-target para la ventana modal
-        echo 'data-toggle="modal" data-target="#modal' . $id_map . '">';
+        // Asegúrate de que el botón para "LIBRE" no tenga una imagen de fondo
+        if ($estado_espacio === 'LIBRE') {
+            echo 'style="width: 100px; height: 100px;"'; // Establece el tamaño deseado
+        }
 
+        echo ' data-toggle="modal" data-target="#modal' . $id_map . '">';
         echo '<br>';
         echo '</button>'; // Cierra el botón
 
         // Muestra el estado debajo del botón (puedes eliminar esta línea si no deseas mostrar el estado)
-        echo '<p>' . $estado_espacio . '</p>';
+        echo '<p class="text-white">' . $estado_espacio . '</p>';
 
         // Resto del código del modal aquí...
         // Agrega el contenido de la ventana modal que permitirá seleccionar la placa.
@@ -126,46 +128,6 @@ if ($result) {
     echo 'Error en la consulta: ' . mysqli_error($con);
 }
 ?>
-
-<!-- Ventana modal (una por cada espacio) -->
-<?php
-$result = mysqli_query($con, $query);
-if ($result) {
-    while ($row = mysqli_fetch_assoc($result)) {
-        $id_map = $row['id_map'];
-        $nro_espacio = $row['nro_espacio'];
-
-        echo '<div class="modal fade" id="modal' . $id_map . '">';
-        echo '<div class="modal-dialog">';
-        echo '<div class="modal-content">';
-        
-        // Contenido de la ventana modal
-        echo '<div class="modal-header">';
-        echo '<p class="text-black">REGSITRO ENTRADA</p>';
-        echo '<h4 class="modal-title">Espacio ' . $nro_espacio . '</h4>';
-        echo '<button type="button" class="close" data-dismiss="modal">&times;</button>';
-        echo '</div>';
-        
-        echo '<div class="modal-body">';
-        // Aquí puedes agregar el contenido de la ventana modal
-        echo 'Contenido de la ventana modal para el espacio ' . $nro_espacio;
-        echo '</div>';
-
-        // Agrega el botón "Aceptar"
-        echo '<div class="modal-footer">';
-        echo '<button type="button" class="btn btn-primary" data-dismiss="modal">Aceptar</button>';
-        echo '<div class="modal-footer">';
-        echo '<button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>';
-        echo '</div>';
-        
-
-        
-        echo '</div>';
-        echo '</div>';
-        echo '</div>';
-    }
-}
-?>x
 
 
 
