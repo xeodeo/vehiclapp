@@ -19,7 +19,7 @@ if (strlen($_SESSION['vpmsaid']==0)) {
     <link rel="shortcut icon" href="https://i.imgur.com/QRAUqs9.png">
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.0/normalize.min.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lykmapipo/themify-icons@0.1.2/css/themify-icons.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pixeden-stroke-7-icon@1.2.3/pe-icon-7-stroke/dist/pe-icon-7-stroke.min.css">
@@ -132,8 +132,9 @@ if ($result) {
                             <div class="form-group text-dark">
                                 <label>Seleccione una opción:</label>
                                 <select id="opcion_modal" class="form-control">
-                                    <option value="visitante">Visitante</option>
-                                    <option value="residente">Residente</option>
+                                <option value="control">Seleccione una opcion</option>
+                                <option value="visitante">Visitante</option>
+                                <option value="residente">Residente</option>
                                 </select>
                             </div>
         
@@ -145,7 +146,7 @@ if ($result) {
                             </div>
         
                             <div id="opciones_residente" style="display:none">
-                                <div class="form-group">
+                                <div class="form-group text-dark">
                                     <label>Número de apartamento</label>
                                     <input type="text" class="form-control">
                                 </div>
@@ -217,37 +218,34 @@ if ($result) {
 
 <!-- Scripts -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/jquery@2.2.4/dist/jquery.min.js"></script>
+<script>
+    $(document).ready(function () {
+        // Escucha el evento de cambio en el elemento <select>
+        $('select#opcion_modal').change(function () {
+            var selectedOption = $(this).val(); // Obtiene la opción seleccionada
+
+            // Oculta todos los elementos con la clase "opcion-container"
+            $('.opcion-container').hide();
+
+            // Muestra los elementos correspondientes según la opción seleccionada
+            if (selectedOption === 'control'){
+                $('#opciones_residente').hide();
+                $('#opciones_visitante').hide();
+            } else if (selectedOption === 'visitante') {
+                $('#opciones_visitante').show();
+                $('#opciones_residente').hide();
+            } else if (selectedOption === 'residente') {
+                $('#opciones_visitante').hide();
+                $('#opciones_residente').show();
+            }
+        });
+    });
+</script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@2.2.4/dist/jquery.min.js"></>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.4/dist/umd/popper.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/jquery-match-height@0.7.2/dist/jquery.matchHeight.min.js"></script>
 <script src="assets/js/main.js"></script>
-
-<script>
-    // Obtén el elemento select y los elementos a mostrar/ocultar
-    var select = document.getElementById("opcion_modal");
-    var opcionesVisitante = document.getElementById("opciones_visitante");
-    var opcionesResidente = document.getElementById("opciones_residente");
-
-    // Agrega un controlador de eventos al cambio de opción en el select
-    select.addEventListener("change", function() {
-        if (select.value === "visitante") {
-            // Si se selecciona "Visitante", muestra las opciones de visitante y oculta las de residente
-            opcionesVisitante.style.display = "block";
-            opcionesResidente.style.display = "none";
-        } else if (select.value === "residente") {
-            // Si se selecciona "Residente", muestra las opciones de residente y oculta las de visitante
-            opcionesVisitante.style.display = "none";
-            opcionesResidente.style.display = "block";
-        } else {
-            // Si no se selecciona ninguna opción válida, oculta ambos conjuntos de opciones
-            opcionesVisitante.style.display = "none";
-            opcionesResidente.style.display = "none";
-        }
-    });
-</script>
-
-
 
 
 </body>
