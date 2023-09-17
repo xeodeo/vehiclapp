@@ -139,16 +139,16 @@ if ($result) {
                             </div> 
         
                             <div id="opciones_visitante_' . $id_map . '" style="display:none" class="opcion-container" data-id_map="' . $id_map . '">
-                                <div class="form-group text-dark">
+                                <div class="form-group text-white">
                                     <label>Documento</label>
                                     <input type="text" class="form-control">
                                     <label>Placa</label>
-                                    <input type="text" id="placa" maxlength="6" class="form-control">
+                                    <input type="text" id="placa_' . $id_map . '" maxlength="6" class="form-control">
                                 </div>
                             </div>
         
                             <div id="opciones_residente_' . $id_map . '" style="display:none" class="opcion-container" data-id_map="' . $id_map . '">
-                                <div class="form-group text-dark">
+                                <div class="form-group text-white">
                                     <label>Número de apartamento</label>
                                     <input type="text" class="form-control">
                                 </div>
@@ -245,6 +245,38 @@ if ($result) {
         });
     });
 </script>
+<script>
+$(document).ready(function() {
+    var alertaMostrada = false;
+
+    // Cambia el selector para apuntar a elementos con IDs únicos
+    $("[id^='placa_']").on("blur", function() {
+        validarPlaca($(this));
+    });
+
+    // Cambia el selector para apuntar a elementos con IDs únicos
+    $("[id^='placa_']").on("input", function() {
+        // Convertir el texto a mayúsculas
+        $(this).val($(this).val().toUpperCase());
+
+        if (alertaMostrada) {
+            alertaMostrada = false;
+        }
+    });
+
+    function validarPlaca(input) {
+        var placaInput = input.val().trim().toUpperCase();
+        var placaPattern = /^[A-Z]{3}\d{3}$/; // Patrón para placas colombianas (3 letras seguidas de 3 números)
+
+        if (!placaPattern.test(placaInput) && !alertaMostrada) {
+            alert("Por favor, ingrese una placa colombiana válida (Ejemplo: ABC123).");
+            input.focus(); // Darle enfoque nuevamente al campo
+            alertaMostrada = true;
+        }
+    }
+});
+</script>
+
 
 <script src="https://cdn.jsdelivr.net/npm/jquery@2.2.4/dist/jquery.min.js"></>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.4/dist/umd/popper.min.js"></script>
