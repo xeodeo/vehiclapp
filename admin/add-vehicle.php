@@ -9,15 +9,16 @@ if (strlen($_SESSION['vpmsaid']==0)) {
 if(isset($_POST['submit']))
   {
     $catename=$_POST['catename'];
-    $vehcomp=$_POST['vehcomp'];
+     $vehcomp=$_POST['vehcomp'];
     $vehreno=$_POST['vehreno'];
     $ownername=$_POST['ownername'];
     $ownercontno=$_POST['ownercontno'];
-    $Documentodueño=$_POST['Documentodueño'];
+    $doc=$_POST['doc'];
+    $enteringtime=$_POST['enteringtime'];
     $enteringtime=$_POST['enteringtime'];
     
      
-    $query=mysqli_query($con, "insert into  tblvehiculo(Tipo,Placa,NombreDueño,TelefonoDueño,EmailDueño,Documento) value('$catename','$vehcomp','$vehreno','$ownername','$ownercontno','$Documentodueño')");
+    $query=mysqli_query($con, "insert into  tblvehiculo(Tipo,Placa,NombreDueño,TelefonoDueño,EmailDueño,Documento) value('$catename','$vehcomp','$vehreno','$ownername','$ownercontno','$doc')");
     if ($query) {
 echo "<script>alert('Vehicle Entry Detail has been added');</script>";
 echo "<script>window.location.href ='manage-incomingvehicle.php'</script>";
@@ -31,10 +32,10 @@ echo "<script>window.location.href ='manage-incomingvehicle.php'</script>";
 }
   ?>
 <!doctype html>
-<html class="no-js bg-dark" lang="">
+<html class="no-js" lang="">
 <head>
     
-    <title>Agregar Vehiculo</title>
+    <title>VPMS - Add Vehicle</title>
    
 
     <link rel="apple-touch-icon" href="https://i.imgur.com/QRAUqs9.png">
@@ -60,23 +61,23 @@ echo "<script>window.location.href ='manage-incomingvehicle.php'</script>";
 
    <?php include_once('includes/header.php');?>
 
-   <div class="breadcrumbs bg-dark">
-            <div class="breadcrumbs-inner bg-dark">
+        <div class="breadcrumbs">
+            <div class="breadcrumbs-inner">
                 <div class="row m-0">
                     <div class="col-sm-4">
-                        <div class="page-header float-left bg-dark text-white">
+                        <div class="page-header float-left">
                             <div class="page-title">
-                                <h1>Panel</h1>
+                                <h1>Dashboard</h1>
                             </div>
                         </div>
                     </div>
                     <div class="col-sm-8">
-                        <div class="page-header float-right bg-dark">
+                        <div class="page-header float-right">
                             <div class="page-title">
-                                <ol class="breadcrumb text-right  bg-dark text-white">
-                                    <li><a href="dashboard.php">Panel</a></li>
-                                    <li><a href="add-vehicle.php">Vehiculo</a></li>
-                                    <li class="active">Agregar Vehiculo</li>
+                                <ol class="breadcrumb text-right">
+                                    <li><a href="dashboard.php">Dashboard</a></li>
+                                    <li><a href="add-vehicle.php">Vehicle</a></li>
+                                    <li class="active">Add Vehicle</li>
                                 </ol>
                             </div>
                         </div>
@@ -85,7 +86,7 @@ echo "<script>window.location.href ='manage-incomingvehicle.php'</script>";
             </div>
         </div>
 
-        <div class="content bg-secondary">
+        <div class="content">
             <div class="animated fadeIn">
 
 
@@ -102,53 +103,51 @@ echo "<script>window.location.href ='manage-incomingvehicle.php'</script>";
 
                     <div class="col-lg-12">
                         <div class="card">
-                            <div class="card-header bg-dark text-white">
-                                <strong>Agregar </strong> Vehiculo
+                            <div class="card-header">
+                                <strong>Add </strong> Vehicle
                             </div>
-                            <div class="card-body card-block bg-dark text-white">
+                            <div class="card-body card-block">
                                 <form action="" method="post" enctype="multipart/form-data" class="form-horizontal">
                                     
 
-                                    <div class="row form-group bg-dark text-white">
-                                        <div class="col col-md-3 "><label for="select" class=" form-control-label ">Seleccionar</label></div>
-                                        <div class="col-12 col-md-9 bg-dark">
-                                            <select name="catename " id="catename" class="form-control">
-                                                <option value="0">Seleccionar Categoria</option>
+                                    <div class="row form-group">
+                                        <div class="col col-md-3"><label for="select" class=" form-control-label">Tipo de vehiculo</label></div>
+                                        <div class="col-12 col-md-9">
+                                            <select name="catename" id="catename" class="form-control">
+                                                <option value="0">Seleccione una opcion</option>
                                                 <?php $query=mysqli_query($con,"select * from tblcategoria");
               while($row=mysqli_fetch_array($query))
               {
               ?>    
                                                  <option value="<?php echo $row['TipoVehiculo'];?>"><?php echo $row['TipoVehiculo'];?></option>
                   <?php } ?> 
-                  </select>
+                                            </select>
                                         </div>
                                     </div>
                                     <div class="row form-group">
-                                        <div class="col col-md-3"><label for="text-input" class=" form-control-label">Placa del vehiculo</label></div>
-                                        <div class="col-12 col-md-9"><input type="text" id="vehcomp" name="vehcomp" class="form-control " placeholder="Placa auto" required="true"></div>
+                                        <div class="col col-md-3"><label for="text-input" class=" form-control-label">Placa</label></div>
+                                        <div class="col-12 col-md-9"><input type="text" id="vehcomp" name="vehcomp" class="form-control" placeholder="Ingrese Placa del vehiculo" required="true"></div>
                                     </div>
                                  
                                      <div class="row form-group">
-                                        <div class="col col-md-3"><label for="text-input" class=" form-control-label">Nombre del dueño</label></div>
-                                        <div class="col-12 col-md-9"><input type="text" id="vehreno" name="vehreno" class="form-control " placeholder="Nombre del dueño" required="true"></div>
+                                        <div class="col col-md-3"><label for="text-input" class=" form-control-label">Nombre del Dueño</label></div>
+                                        <div class="col-12 col-md-9"><input type="text" id="vehreno" name="vehreno" class="form-control" placeholder="Ingrese Nombre del propietario" required="true"></div>
                                     </div>
                                     <div class="row form-group">
-                                        <div class="col col-md-3"><label for="text-input" class=" form-control-label">Telefono del Dueño</label></div>
-                                        <div class="col-12 col-md-9"><input type="text" id="ownername" name="ownername" class="form-control " placeholder="Telefono del dueño" required="true"></div>
+                                        <div class="col col-md-3"><label for="text-input" class=" form-control-label">Telefono</label></div>
+                                        <div class="col-12 col-md-9"><input type="text" id="ownername" name="ownername" class="form-control" placeholder="Ingrese el numero de telefono" required="true" maxlength="10" pattern="[0-9]+"></div>
                                     </div>
                                      <div class="row form-group">
-                                        <div class="col col-md-3"><label for="text-input" class=" form-control-label">Email dueño</label></div>
-                                        <div class="col-12 col-md-9"><input type="text" id="ownercontno" name="ownercontno" class="form-control " placeholder="Email del propietario" required="true"></div>
+                                        <div class="col col-md-3"><label for="text-input" class=" form-control-label">Correo</label></div>
+                                        <div class="col-12 col-md-9"><input type="text" id="ownercontno" name="ownercontno" class="form-control" placeholder="Ingrese el correo del dueño" required="true"></div>
                                     </div>
                                     <div class="row form-group">
                                         <div class="col col-md-3"><label for="text-input" class=" form-control-label">Documento</label></div>
-                                        <div class="col-12 col-md-9"><input type="text" id="Documentodueño" name="Documentodueño" class="form-control " placeholder="Número de Documento del propietario" required="true" maxlength="10" pattern="[0-9]+"></div>
+                                        <div class="col-12 col-md-9"><input type="text" id="ownercontno" name="ownercontno" class="form-control" placeholder="Ingrese el documento del dueño" required="true" maxlength="10" pattern="[0-9]+"></div>
                                     </div>
-                                   
-                                   
                                     
                                     
-                                   <p style="text-align: center;"> <button type="submit" class="btn btn-primary btn-sm" name="submit" >Agregar</button></p>
+                                   <p style="text-align: center;"> <button type="submit" class="btn btn-primary btn-sm" name="submit" >REGSITAR VEHICULO</button></p>
                                 </form>
                             </div>
                             
@@ -169,7 +168,7 @@ echo "<script>window.location.href ='manage-incomingvehicle.php'</script>";
         </div><!-- .animated -->
     </div><!-- .content -->
 
-    <div class="clearfix bg-dark"></div>
+    <div class="clearfix"></div>
 
    <?php include_once('includes/footer.php');?>
 
@@ -178,6 +177,40 @@ echo "<script>window.location.href ='manage-incomingvehicle.php'</script>";
 <!-- Right Panel -->
 
 <!-- Scripts -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+$(document).ready(function() {
+    var alertaMostrada = false;
+
+    // Cambia el selector para apuntar al ID correcto
+    $("#vehcomp").on("blur", function() {
+        validarPlaca($(this));
+    });
+
+    // Cambia el selector para apuntar al ID correcto
+    $("#vehcomp").on("input", function() {
+        // Convertir el texto a mayúsculas
+        $(this).val($(this).val().toUpperCase());
+
+        if (alertaMostrada) {
+            alertaMostrada = false;
+        }
+    });
+
+    function validarPlaca(input) {
+        var placaInput = input.val().trim().toUpperCase();
+        var placaPattern = /^[A-Z]{3}\d{3}$/; // Patrón para placas colombianas (3 letras seguidas de 3 números)
+
+        if (!placaPattern.test(placaInput) && !alertaMostrada) {
+            alert("Por favor, ingrese una placa colombiana válida (Ejemplo: ABC123).");
+            input.val(''); // Limpiar el campo si no es válido
+            input.focus(); // Darle enfoque nuevamente al campo
+            alertaMostrada = true;
+        }
+    }
+});
+</script>
+
 <script src="https://cdn.jsdelivr.net/npm/jquery@2.2.4/dist/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.4/dist/umd/popper.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js"></script>
