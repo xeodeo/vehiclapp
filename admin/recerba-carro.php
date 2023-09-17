@@ -131,21 +131,21 @@ if ($result) {
                         <div class="modal-body">
                             <div class="form-group text-dark">
                                 <label>Seleccione una opción:</label>
-                                <select id="opcion_modal" class="form-control">
-                                <option value="control">Seleccione una opcion</option>
+                                <select id="opcion_modal_' . $id_map . '" class="form-control" data-id_map="' . $id_map . '">
+                                <option value="control">Seleccione una opción</option>
                                 <option value="visitante">Visitante</option>
                                 <option value="residente">Residente</option>
                                 </select>
                             </div>
         
-                            <div id="opciones_visitante" style="display:none">
+                            <div id="opciones_visitante_' . $id_map . '" style="display:none" class="opcion-container" data-id_map="' . $id_map . '">
                                 <div class="form-group text-dark">
                                     <label>Documento</label>
                                     <input type="text" class="form-control">
                                 </div>
                             </div>
         
-                            <div id="opciones_residente" style="display:none">
+                            <div id="opciones_residente_' . $id_map . '" style="display:none" class="opcion-container" data-id_map="' . $id_map . '">
                                 <div class="form-group text-dark">
                                     <label>Número de apartamento</label>
                                     <input type="text" class="form-control">
@@ -168,8 +168,9 @@ if ($result) {
 } else {
     echo 'Error en la consulta: ' . mysqli_error($con);
 }
-
 ?>
+
+                              
 
 
 <style>
@@ -220,27 +221,29 @@ if ($result) {
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
     $(document).ready(function () {
-        // Escucha el evento de cambio en el elemento <select>
-        $('select#opcion_modal').change(function () {
-            var selectedOption = $(this).val(); // Obtiene la opción seleccionada
+        // Escucha el evento de cambio en todos los elementos <select> con id que comienza con "opcion_modal"
+        $('select[id^="opcion_modal"]').change(function () {
+            var selectedOption = $(this).val();
+            var id_map = $(this).attr('data-id_map');
 
-            // Oculta todos los elementos con la clase "opcion-container"
-            $('.opcion-container').hide();
+            // Oculta todos los elementos con la clase "opcion-container" específicos para este id_map
+            $('.opcion-container[data-id_map="' + id_map + '"]').hide();
 
-            // Muestra los elementos correspondientes según la opción seleccionada
-            if (selectedOption === 'control'){
-                $('#opciones_residente').hide();
-                $('#opciones_visitante').hide();
+            // Muestra los elementos correspondientes según la opción seleccionada para este id_map
+            if (selectedOption === 'control') {
+                $('#opciones_residente_' + id_map).hide();
+                $('#opciones_visitante_' + id_map).hide();
             } else if (selectedOption === 'visitante') {
-                $('#opciones_visitante').show();
-                $('#opciones_residente').hide();
+                $('#opciones_visitante_' + id_map).show();
+                $('#opciones_residente_' + id_map).hide();
             } else if (selectedOption === 'residente') {
-                $('#opciones_visitante').hide();
-                $('#opciones_residente').show();
+                $('#opciones_visitante_' + id_map).hide();
+                $('#opciones_residente_' + id_map).show();
             }
         });
     });
 </script>
+
 <script src="https://cdn.jsdelivr.net/npm/jquery@2.2.4/dist/jquery.min.js"></>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.4/dist/umd/popper.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js"></script>
