@@ -148,10 +148,51 @@ if ($result) {
                             </div>
         
                             <div id="opciones_residente_' . $id_map . '" style="display:none" class="opcion-container" data-id_map="' . $id_map . '">
-                                <div class="form-group text-white">
-                                    <label>Número de apartamento</label>
-                                    <input type="text" class="form-control">
+                                <div class="form-grop row">
+                                <label for="" class="col-sm-2 col-form-label">Placa:</label>
+                                <div class="col-sm-6">
+                                <input type="text" id="placa_' . $id_map . '" maxlength="6" class="form-control">
                                 </div>
+                                <div class="col-sm-2">
+                                <button class="btn btn-primary">Buscar</button>
+                                </div>
+                                </div>
+                                <br>
+                                <div class="form-grop row">
+                                <label for="" class="col-sm-3 col-form-label">Nombre:</label>
+                                <div class="col-sm-7">
+                                <input type="text" name="" id="" class="form-control">
+                                </div>
+                                </div>
+                                <br>
+                                <div class="form-grop row">
+                                <label for="" class="col-sm-3 col-form-label">Telefono:</label>
+                                <div class="col-sm-7">
+                                <input type="text" name="" id="" class="form-control">
+                                </div>
+                                </div>
+                                <br>
+                                <div class="form-grop row">
+                                <label for="" class="col-sm-3 col-form-label">Dia de ingreso:</label>
+                                <div class="col-sm-7">
+                                <?php
+                                date_default_timezone_set("America/Bogota");
+                                $fecha = date("Y-m-d");
+                                ?>
+                                <input type="date" name="fecha" id="fecha_' . $id_map . '" class="form-control">                      
+                                </div>
+                                </div>
+                                <div class="form-grop row">
+                                <label for="" class="col-sm-3 col-form-label">Hora:</label>
+                                <div class="col-sm-7">
+                                <?php
+                                date_default_timezone_set("America/Bogota");
+                                $hora = date("H:i:s"); // Formato de hora: HH:MM:SS
+                                ?>
+                                <input type="time" name="hora" id="hora' . $id_map . '" class="form-control">
+                                </div>
+                                </div>
+
                             </div>
                         </div>
                         <div class="modal-footer">
@@ -277,7 +318,50 @@ $(document).ready(function() {
     }
 });
 </script>
-
+<script>
+  $(document).ready(function () {
+    $('input[type="date"].form-control').each(function () {
+      var id = $(this).attr('id');
+      var hoy = new Date();
+      var dia = hoy.getDate();
+      var mes = hoy.getMonth() + 1;
+      var anio = hoy.getFullYear();
+      if (mes < 10) {
+        mes = "0" + mes;
+      }
+      if (dia < 10) {
+        dia = "0" + dia;
+      }
+      var fechaActual = anio + "-" + mes + "-" + dia;
+      $("#" + id).val(fechaActual);
+    });
+  });
+</script>
+<script>
+  $(document).ready(function () {
+    $('input[type="time"].form-control').each(function () {
+      var id = $(this).attr('id');
+      var ahora = new Date();
+      var hora = ahora.getHours();
+      var minutos = ahora.getMinutes();
+      var segundos = ahora.getSeconds();
+      
+      // Formatear la hora y minutos para tener dos dígitos
+      if (hora < 10) {
+        hora = "0" + hora;
+      }
+      if (minutos < 10) {
+        minutos = "0" + minutos;
+      }
+      if (segundos < 10) {
+        segundos = "0" + segundos;
+      }
+      
+      var horaActual = hora + ":" + minutos + ":" + segundos;
+      $("#" + id).val(horaActual);
+    });
+  });
+</script>
 
 <script src="https://cdn.jsdelivr.net/npm/jquery@2.2.4/dist/jquery.min.js"></>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.4/dist/umd/popper.min.js"></script>
