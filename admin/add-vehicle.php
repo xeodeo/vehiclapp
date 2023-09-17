@@ -8,16 +8,16 @@ if (strlen($_SESSION['vpmsaid']==0)) {
 
 if(isset($_POST['submit']))
   {
-    $parkingnumber=mt_rand(100000000, 999999999);
     $catename=$_POST['catename'];
-     $vehcomp=$_POST['vehcomp'];
+    $vehcomp=$_POST['vehcomp'];
     $vehreno=$_POST['vehreno'];
     $ownername=$_POST['ownername'];
     $ownercontno=$_POST['ownercontno'];
+    $Documentodueño=$_POST['Documentodueño'];
     $enteringtime=$_POST['enteringtime'];
     
      
-    $query=mysqli_query($con, "insert into  tblvehicle(ParkingNumber,VehicleCategory,VehicleCompanyname,RegistrationNumber,OwnerName,OwnerContactNumber) value('$parkingnumber','$catename','$vehcomp','$vehreno','$ownername','$ownercontno')");
+    $query=mysqli_query($con, "insert into  tblvehiculo(Tipo,Placa,NombreDueño,TelefonoDueño,EmailDueño,Documento) value('$catename','$vehcomp','$vehreno','$ownername','$ownercontno','$Documentodueño')");
     if ($query) {
 echo "<script>alert('Vehicle Entry Detail has been added');</script>";
 echo "<script>window.location.href ='manage-incomingvehicle.php'</script>";
@@ -112,7 +112,7 @@ echo "<script>window.location.href ='manage-incomingvehicle.php'</script>";
                                     <div class="row form-group bg-dark text-white">
                                         <div class="col col-md-3 "><label for="select" class=" form-control-label ">Seleccionar</label></div>
                                         <div class="col-12 col-md-9 bg-dark">
-                                            <select name="catename " id="catename" class="form-control ">
+                                            <select name="catename " id="catename" class="form-control">
                                                 <option value="0">Seleccionar Categoria</option>
                                                 <?php $query=mysqli_query($con,"select * from tblcategoria");
               while($row=mysqli_fetch_array($query))
@@ -124,25 +124,25 @@ echo "<script>window.location.href ='manage-incomingvehicle.php'</script>";
                                         </div>
                                     </div>
                                     <div class="row form-group">
-                                        <div class="col col-md-3"><label for="text-input" class=" form-control-label">Documento de Identidad</label></div>
-                                        <div class="col-12 col-md-9"><input type="text" id="vehcomp" name="vehcomp" class="form-control " placeholder="Documento de Identidad" required="true"></div>
+                                        <div class="col col-md-3"><label for="text-input" class=" form-control-label">Placa del vehiculo</label></div>
+                                        <div class="col-12 col-md-9"><input type="text" id="vehcomp" name="vehcomp" class="form-control " placeholder="Placa auto" required="true"></div>
                                     </div>
                                  
                                      <div class="row form-group">
-                                        <div class="col col-md-3"><label for="text-input" class=" form-control-label">Placa</label></div>
-                                        <div class="col-12 col-md-9"><input type="text" id="vehreno" name="vehreno" class="form-control " placeholder="Placa" required="true"></div>
+                                        <div class="col col-md-3"><label for="text-input" class=" form-control-label">Nombre del dueño</label></div>
+                                        <div class="col-12 col-md-9"><input type="text" id="vehreno" name="vehreno" class="form-control " placeholder="Nombre del dueño" required="true"></div>
                                     </div>
                                     <div class="row form-group">
-                                        <div class="col col-md-3"><label for="text-input" class=" form-control-label">Nombre del dueño</label></div>
-                                        <div class="col-12 col-md-9"><input type="text" id="ownername" name="ownername" class="form-control " placeholder="Nombre del dueño" required="true"></div>
+                                        <div class="col col-md-3"><label for="text-input" class=" form-control-label">Telefono del Dueño</label></div>
+                                        <div class="col-12 col-md-9"><input type="text" id="ownername" name="ownername" class="form-control " placeholder="Telefono del dueño" required="true"></div>
                                     </div>
                                      <div class="row form-group">
-                                        <div class="col col-md-3"><label for="text-input" class=" form-control-label">Número de contacto del propietario</label></div>
-                                        <div class="col-12 col-md-9"><input type="text" id="ownercontno" name="ownercontno" class="form-control " placeholder="Número de contacto del propietario" required="true" maxlength="10" pattern="[0-9]+"></div>
+                                        <div class="col col-md-3"><label for="text-input" class=" form-control-label">Email dueño</label></div>
+                                        <div class="col-12 col-md-9"><input type="text" id="ownercontno" name="ownercontno" class="form-control " placeholder="Email del propietario" required="true"></div>
                                     </div>
                                     <div class="row form-group">
-                                        <div class="col col-md-3"><label for="text-input" class=" form-control-label">Fecha Registro</label></div>
-                                        <div class="col-12 col-md-9"><input type="date" id="ownercontno" name="ownercontno" class="form-control " placeholder="Número de contacto del propietario" required="true" maxlength="10" pattern="[0-9]+"></div>
+                                        <div class="col col-md-3"><label for="text-input" class=" form-control-label">Documento</label></div>
+                                        <div class="col-12 col-md-9"><input type="text" id="Documentodueño" name="Documentodueño" class="form-control " placeholder="Número de Documento del propietario" required="true" maxlength="10" pattern="[0-9]+"></div>
                                     </div>
                                    
                                    

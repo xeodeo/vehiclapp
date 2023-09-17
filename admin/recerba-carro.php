@@ -270,6 +270,7 @@ $(document).ready(function() {
 
         if (!placaPattern.test(placaInput) && !alertaMostrada) {
             alert("Por favor, ingrese una placa colombiana válida (Ejemplo: ABC123).");
+            input.val(''); // Limpiar el campo si no es válido
             input.focus(); // Darle enfoque nuevamente al campo
             alertaMostrada = true;
         }
