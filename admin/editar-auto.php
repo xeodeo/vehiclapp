@@ -135,6 +135,9 @@ while ($row=mysqli_fetch_array($ret)) {
                                     <div class="row form-group">
                                         <div class="col col-md-3"><label for="text-input" class=" form-control-label">Email del Dueño</label></div>
                                         <div class="col-12 col-md-9"><input type="text" id="email" name="email" class="form-control bg-secondary text-white" placeholder="Categoría de vehículo" required="true" value="<?php  echo $row['EmailDueño'];?>"></div>
+                                        <center>
+                                        <div id="email-error" style="color: red;"></div>
+                                        </center>
                                     </div>
                                     <div class="row form-group">
                                         <div class="col col-md-3"><label for="text-input" class=" form-control-label">Documento</label></div>
@@ -173,6 +176,62 @@ while ($row=mysqli_fetch_array($ret)) {
 <!-- Right Panel -->
 
 <!-- Scripts -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+$(document).ready(function() {
+    var alertaMostrada = false;
+
+    // Cambia el selector para apuntar al ID correcto
+    $("#numplaca").on("blur", function() {
+        validarPlaca($(this));
+    });
+
+    // Cambia el selector para apuntar al ID correcto
+    $("#numplaca").on("input", function() {
+        // Convertir el texto a mayúsculas
+        $(this).val($(this).val().toUpperCase());
+
+        if (alertaMostrada) {
+            alertaMostrada = false;
+        }
+    });
+
+    function validarPlaca(input) {
+        var placaInput = input.val().trim().toUpperCase();
+        var placaPattern = /^[A-Z]{3}\d{3}$/; // Patrón para placas colombianas (3 letras seguidas de 3 números)
+
+        if (!placaPattern.test(placaInput) && !alertaMostrada) {
+            alert("Por favor, ingrese una placa colombiana válida (Ejemplo: ABC123).");
+            input.val(''); // Limpiar el campo si no es válido
+            input.focus(); // Darle enfoque nuevamente al campo
+            alertaMostrada = true;
+        }
+    }
+});
+</script>
+<script>
+    $(document).ready(function() {
+        // Función para validar una dirección de correo electrónico
+        function esCorreoValido(email) {
+            // Expresión regular para validar el formato de un correo electrónico
+            var regex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+            return regex.test(email);
+        }
+
+        // Manejar el evento blur en el campo de entrada
+        $("#email").on("blur", function() {
+            var emailInput = $(this).val();
+
+            if (!esCorreoValido(emailInput)) {
+                $("#email-error").text("Por favor, ingrese una dirección de correo electrónico válida.");
+                $(this).val(""); // Limpiar el campo si no es válido
+                $(this).focus(); // Darle enfoque nuevamente al campo
+            } else {
+                $("#email-error").text(""); // Limpiar el mensaje de error
+            }
+        });
+    });
+</script>
 <script src="https://cdn.jsdelivr.net/npm/jquery@2.2.4/dist/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.4/dist/umd/popper.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js"></script>
