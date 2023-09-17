@@ -124,13 +124,13 @@ echo "<script>window.location.href ='manage-incomingvehicle.php'</script>";
                                         </div>
                                     </div>
                                     <div class="row form-group">
-                                        <div class="col col-md-3"><label for="text-input" class=" form-control-label">Empresa de vehículos</label></div>
-                                        <div class="col-12 col-md-9"><input type="text" id="vehcomp" name="vehcomp" class="form-control " placeholder="Empresa de vehículos" required="true"></div>
+                                        <div class="col col-md-3"><label for="text-input" class=" form-control-label">Documento de Identidad</label></div>
+                                        <div class="col-12 col-md-9"><input type="text" id="vehcomp" name="vehcomp" class="form-control " placeholder="Documento de Identidad" required="true"></div>
                                     </div>
                                  
                                      <div class="row form-group">
-                                        <div class="col col-md-3"><label for="text-input" class=" form-control-label">Número de registro</label></div>
-                                        <div class="col-12 col-md-9"><input type="text" id="vehreno" name="vehreno" class="form-control " placeholder="Número de registro" required="true"></div>
+                                        <div class="col col-md-3"><label for="text-input" class=" form-control-label">Placa</label></div>
+                                        <div class="col-12 col-md-9"><input type="text" id="vehreno" name="vehreno" class="form-control " placeholder="Placa" required="true"></div>
                                     </div>
                                     <div class="row form-group">
                                         <div class="col col-md-3"><label for="text-input" class=" form-control-label">Nombre del dueño</label></div>
@@ -140,6 +140,11 @@ echo "<script>window.location.href ='manage-incomingvehicle.php'</script>";
                                         <div class="col col-md-3"><label for="text-input" class=" form-control-label">Número de contacto del propietario</label></div>
                                         <div class="col-12 col-md-9"><input type="text" id="ownercontno" name="ownercontno" class="form-control " placeholder="Número de contacto del propietario" required="true" maxlength="10" pattern="[0-9]+"></div>
                                     </div>
+                                    <div class="row form-group">
+                                        <div class="col col-md-3"><label for="text-input" class=" form-control-label">Fecha Registro</label></div>
+                                        <div class="col-12 col-md-9"><input type="date" id="ownercontno" name="ownercontno" class="form-control " placeholder="Número de contacto del propietario" required="true" maxlength="10" pattern="[0-9]+"></div>
+                                    </div>
+                                   
                                    
                                     
                                     
