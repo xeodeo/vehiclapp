@@ -8,7 +8,7 @@ if (strlen($_SESSION['vpmsaid']==0)) {
 // For deleting    
 if($_GET['del']){
 $catid=$_GET['del'];
-mysqli_query($con,"delete from tblvehicle where ID ='$catid'");
+mysqli_query($con,"delete from tblvehiculo where ID ='$catid'");
 echo "<script>alert('Data Deleted');</script>";
 echo "<script>window.location.href='manage-incomingvehicle.php'</script>";
           }
@@ -20,7 +20,7 @@ echo "<script>window.location.href='manage-incomingvehicle.php'</script>";
 <html class="no-js" lang="">
 <head>
    
-    <title>VPMS - Manage Incoming Vehicle</title>
+    <title>VPMS - Manejo de vahiculos</title>
 
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.0/normalize.min.css">
@@ -61,8 +61,8 @@ echo "<script>window.location.href='manage-incomingvehicle.php'</script>";
                             <div class="page-title">
                                 <ol class="breadcrumb text-right">
                                     <li><a href="dashboard.php">Dashboard</a></li>
-                                    <li><a href="manage-incomingvehicle.php">Manage Vehicle</a></li>
-                                    <li class="active">Manage Incoming Vehicle</li>
+                                    <li><a href="manage-incomingvehicle.php">Manejo de vahiculos</a></li>
+                                    <li class="active">Manejo de vahiculos</li>
                                 </ol>
                             </div>
                         </div>
@@ -80,7 +80,7 @@ echo "<script>window.location.href='manage-incomingvehicle.php'</script>";
                 <div class="col-lg-12">
                     <div class="card">
                         <div class="card-header">
-                            <strong class="card-title">Manage Incoming Vehicle</strong>
+                            <strong class="card-title">Manejo de vahiculos</strong>
                         </div>
                         <div class="card-body">
                              <table class="table">
@@ -90,16 +90,17 @@ echo "<script>window.location.href='manage-incomingvehicle.php'</script>";
                   <th>S.NO</th>
             
                  
-                    <th>Parking Number</th>
-                    <th>Owner Name</th>
-                    <th>Vehicle Reg Number</th>
+                    <th>Placa</th>
+                    <th>Nombre Dueño</th>
+                    <th>Telefono</th>
+                    <th>Tipo</th>
                    
                           <th>Action</th>
                 </tr>
                                         </tr>
                                         </thead>
                <?php
-$ret=mysqli_query($con,"select *from   tblvehicle where Status=''");
+$ret=mysqli_query($con,"select *from   tblvehiculo ");
 $cnt=1;
 while ($row=mysqli_fetch_array($ret)) {
 ?>
@@ -108,13 +109,14 @@ while ($row=mysqli_fetch_array($ret)) {
                   <td><?php echo $cnt;?></td>
             
                  
-                  <td><?php  echo $row['ParkingNumber'];?></td>
-                  <td><?php  echo $row['OwnerName'];?></td>
-                  <td><?php  echo $row['RegistrationNumber'];?></td>
+                  <td><?php  echo $row['Placa'];?></td>
+                  <td><?php  echo $row['NombreDueño'];?></td>
+                  <td><?php  echo $row['TelefonoDueño'];?></td>
+                  <td><?php  echo $row['Tipo'];?></td>
                   
-                  <td><a href="view-incomingvehicle-detail.php?viewid=<?php echo $row['ID'];?>" class="btn btn-primary">View</a> 
+                  <td><a href="editar-auto.php?editid=<?php echo $row['ID'];?>" class="btn btn-primary">Editar</a>
 
-<a href="print.php?vid=<?php echo $row['ID'];?>" style="cursor:pointer" target="_blank" class="btn btn-warning">Print</a>
+
 <a href="manage-incomingvehicle.php?del=<?php echo $row['ID'];?>" class="btn btn-danger" onClick="return confirm('Are you sure you want to delete?')">Delete</a>
                   </td>
                 </tr>
