@@ -142,6 +142,8 @@ if ($result) {
                                 <div class="form-group text-dark">
                                     <label>Documento</label>
                                     <input type="text" class="form-control">
+                                    <label>Placa</label>
+                                    <input type="text" id="placa" maxlength="6" class="form-control">
                                 </div>
                             </div>
         
