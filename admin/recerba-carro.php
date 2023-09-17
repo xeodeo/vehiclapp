@@ -122,21 +122,21 @@ if ($result) {
         // Agrega el contenido de la ventana modal que permitirá seleccionar la placa.
         if ($estado_espacio === 'LIBRE') {
             echo '
-            <div class="modal fade" id="modal' . $id_map . '" tabindex="-1">
-                <div class="modal-dialog">
-                    <div class="modal-content">
+            <div class="modal fade " id="modal' . $id_map . '" tabindex="-1">
+                <div class="modal-dialog  ">
+                    <div class="modal-content bg-dark text-white">
                         <div class="modal-header">
-                            <h5 class="modal-title text-dark" id="exampleModalLabel">Ingreso de Vehículo</h5>
+                            <h5 class="modal-title text-white text-uppercase"  id="exampleModalLabel">Ingreso de Vehículo</h5>
                         </div>
                         <div class="modal-body">
-                            <div class="form-group text-dark">
-                                <label>Seleccione una opción:</label>
-                                <select id="opcion_modal_' . $id_map . '" class="form-control" data-id_map="' . $id_map . '">
-                                <option value="control">Seleccione una opción</option>
+                            <div class="form-group text-white">
+                                <label>Seleccione una opción:</label> <br><br>
+                                <select id="opcion_modal_' . $id_map . '" class="form-control bg-secondary text-white" data-id_map="' . $id_map . '">
+                                <option value="control">Seleccione el Rol</option>
                                 <option value="visitante">Visitante</option>
                                 <option value="residente">Residente</option>
                                 </select>
-                            </div>
+                            </div> 
         
                             <div id="opciones_visitante_' . $id_map . '" style="display:none" class="opcion-container" data-id_map="' . $id_map . '">
                                 <div class="form-group text-dark">
@@ -155,7 +155,7 @@ if ($result) {
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                            <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
                             <button type="button" class="btn btn-primary">Guardar</button>
                         </div>
                     </div>

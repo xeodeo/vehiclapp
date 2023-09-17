@@ -22,10 +22,10 @@ if (strlen($_SESSION['vpmsaid']==0)) {
   }
   ?>
 <!doctype html>
-<html class="no-js" lang="">
+<html class="no-js bg-dark" lang="">
 <head>
     
-    <title>VPMS - Admin Profile</title>
+    <title>Perfil Admin</title>
    
 
     <link rel="apple-touch-icon" href="https://i.imgur.com/QRAUqs9.png">
@@ -51,23 +51,23 @@ if (strlen($_SESSION['vpmsaid']==0)) {
 
    <?php include_once('includes/header.php');?>
 
-        <div class="breadcrumbs">
-            <div class="breadcrumbs-inner">
+        <div class="breadcrumbs bg-dark">
+            <div class="breadcrumbs-inner bg-dark">
                 <div class="row m-0">
                     <div class="col-sm-4">
-                        <div class="page-header float-left">
+                        <div class="page-header float-left bg-dark text-white">
                             <div class="page-title">
-                                <h1>Dashboard</h1>
+                                <h1>Panel</h1>
                             </div>
                         </div>
                     </div>
                     <div class="col-sm-8">
-                        <div class="page-header float-right">
+                        <div class="page-header float-right bg-dark">
                             <div class="page-title">
-                                <ol class="breadcrumb text-right">
-                                    <li><a href="dashboard.php">Dashboard</a></li>
-                                    <li><a href="admin-profile.php">Profile</a></li>
-                                    <li class="active">Admin Profile</li>
+                                <ol class="breadcrumb text-right bg-dark text-white">
+                                    <li><a href="dashboard.php">Panel</a></li>
+                                    <li><a href="admin-profile.php">Perfil</a></li>
+                                    <li class="active">Perfil Admin</li>
                                 </ol>
                             </div>
                         </div>
@@ -76,13 +76,13 @@ if (strlen($_SESSION['vpmsaid']==0)) {
             </div>
         </div>
 
-        <div class="content">
-            <div class="animated fadeIn">
+        <div class="content bg-secondary">
+            <div class="animated fadeIn ">
 
 
-                <div class="row">
-                    <div class="col-lg-6">
-                        <div class="card">
+                <div class="row ">
+                    <div class="col-lg-6 ">
+                        <div class="card " >
                             
                            
                         </div> <!-- .card -->
@@ -92,9 +92,9 @@ if (strlen($_SESSION['vpmsaid']==0)) {
               
 
                     <div class="col-lg-12">
-                        <div class="card">
+                        <div class="card bg-dark text-white">
                             <div class="card-header">
-                                <strong>Admin </strong> Profile
+                                <strong>Perfil </strong> Admin
                             </div>
                             <div class="card-body card-block">
                                 <form action="" method="post" enctype="multipart/form-data" class="form-horizontal">
@@ -107,25 +107,25 @@ while ($row=mysqli_fetch_array($ret)) {
 
 ?>
                                     <div class="row form-group">
-                                        <div class="col col-md-3"><label for="text-input" class=" form-control-label">Admin Name</label></div>
-                                        <div class="col-12 col-md-9"><input class=" form-control" id="adminname" name="adminname" type="text" value="<?php  echo $row['AdminName'];?>"></div>
+                                        <div class="col col-md-3"><label for="text-input" class=" form-control-label">Nombre Admin</label></div>
+                                        <div class="col-12 col-md-9"><input class=" form-control bg-secondary text-white" id="adminname" name="adminname" type="text" value="<?php  echo $row['AdminName'];?>"></div>
                                     </div>
                                     <div class="row form-group">
-                                        <div class="col col-md-3"><label for="email-input" class=" form-control-label">User Name</label></div>
-                                        <div class="col-12 col-md-9"><input class=" form-control" id="username" name="username" type="text" value="<?php  echo $row['UserName'];?>"  readonly='true'></div>
+                                        <div class="col col-md-3"><label for="email-input" class=" form-control-label">Nombre Usuario</label></div>
+                                        <div class="col-12 col-md-9"><input class=" form-control bg-secondary text-white" id="username" name="username" type="text" value="<?php  echo $row['UserName'];?>"  readonly='true'></div>
                                     </div>
                                     <div class="row form-group">
-                                        <div class="col col-md-3"><label for="password-input" class=" form-control-label">Contact Number</label></div>
-                                        <div class="col-12 col-md-9"> <input class="form-control " id="contactnumber" name="contactnumber" type="text" value="<?php  echo $row['MobileNumber'];?>" required="true"></div>
+                                        <div class="col col-md-3"><label for="password-input" class=" form-control-label">Telefono</label></div>
+                                        <div class="col-12 col-md-9"> <input class="form-control bg-secondary text-white " id="contactnumber" name="contactnumber" type="text" value="<?php  echo $row['MobileNumber'];?>" required="true"></div>
                                     </div>
                                     <div class="row form-group">
                                         <div class="col col-md-3"><label for="disabled-input" class=" form-control-label">Email</label></div>
-                                        <div class="col-12 col-md-9"><input class="form-control " id="email" name="email" type="email" value="<?php  echo $row['Email'];?>" required="true" readonly='true'></div>
+                                        <div class="col-12 col-md-9"><input class="form-control bg-secondary text-white" id="email" name="email" type="email" value="<?php  echo $row['Email'];?>" required="true" readonly='true'></div>
                                     </div>
                                   
                                     
                                     <?php } ?>
-                                   <p style="text-align: center;"> <button type="submit" class="btn btn-primary btn-sm" name="submit" >Update</button></p>
+                                   <p style="text-align: center;"> <button type="submit" class="btn btn-primary btn-sm" name="submit" >Actualizar</button></p>
                                 </form>
                             </div>
                             
@@ -146,7 +146,7 @@ while ($row=mysqli_fetch_array($ret)) {
         </div><!-- .animated -->
     </div><!-- .content -->
 
-    <div class="clearfix"></div>
+    <div class="clearfix bg-dark"></div>
 
    <?php include_once('includes/footer.php');?>
 
