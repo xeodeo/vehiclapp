@@ -124,18 +124,21 @@ foreach ($mapeos as $mapeo) {
                             </div> 
         <div id="opciones_visitante_<?php echo $id_map; ?>" class="opcion-container" style="display: none;">
             <div class="form-group text-white">
-                    <label>Documento</label>
-                    <input type="text" class="form-control">
-                    
-                    <div class="modal-body">
-
-<div class="form-group row">
+            <div class="form-group row">
                     <label for="staticEmail" class="col-sm-3 col-form-label">Placa: <span><b style="color: red">*</b></span></label>
                                                                         <div class="col-sm-6">
                                                                             <input type="text" style="text-transform: uppercase" class="form-control" id="placa_<?php echo $id_map;?>" maxlength="6" class="form-control">
                                                                         </div>
 
             </div>
+            <div class="form-group row">
+                    <label for="staticEmail" class="col-sm-3 col-form-label">Documento</label>
+                    <div class="col-sm-6">
+                    <input type="text" class="form-control">
+                    
+    </div>
+    </div>
+
         </div>
         
         <div id="opciones_residente_<?php echo $id_map; ?>" class="opcion-container" style="display: none;">
