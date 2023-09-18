@@ -100,7 +100,7 @@ foreach ($mapeos as $mapeo) {
             <div class="col">
             <center>
             <h2><?php echo $nro_espacio;?></h2>
-                <button class="btn btn-success" style="width: 40%;height: 114px" data-toggle="modal" data-target="#modal_<?php echo $id_map;?>">
+                <button class="btn btn-success" style="width: 100%;height: 114px" data-toggle="modal" data-target="#modal_<?php echo $id_map;?>">
                 <p class="text-white"><?php echo $estado_espacio;?></p>
                 </button>
                 <!-- Button trigger modal -->
@@ -126,8 +126,15 @@ foreach ($mapeos as $mapeo) {
             <div class="form-group text-white">
                     <label>Documento</label>
                     <input type="text" class="form-control">
-                    <label>Placa</label>
-                    <input type="text" id="placa_<?php echo $id_map;?>" maxlength="6" class="form-control">
+                    
+                    <div class="modal-body">
+
+<div class="form-group row">
+                    <label for="staticEmail" class="col-sm-3 col-form-label">Placa: <span><b style="color: red">*</b></span></label>
+                                                                        <div class="col-sm-6">
+                                                                            <input type="text" style="text-transform: uppercase" class="form-control" id="placa_<?php echo $id_map;?>" maxlength="6" class="form-control">
+                                                                        </div>
+
             </div>
         </div>
         
