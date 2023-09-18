@@ -18,18 +18,8 @@
                 <li>
                     <a href="add-vehicle.php"> <i class="menu-icon ti-plus"></i>Agregar Vehiculo </a>
                 </li>
-                <li class="menu-item-has-children dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
-                        aria-expanded="false"> <i class="menu-icon ti-files"></i>Administrar vehículo</a>
-                    <ul class="sub-menu children dropdown-menu bg-dark">
-                        <li><i class="menu-icon ti-shift-right"></i><a href="manage-incomingvehicle.php">Administrar Entrada
-                                vehículo</a></li>
-                        <li><i class="menu-icon ti-shift-left"></i><a href="manage-outgoingvehicle.php">Administrar Salida
-                                vehículo</a>
-
-                        </li>
-
-                    </ul>
+                <li>
+                    <a href="manage-incomingvehicle.php"> <i class="menu-icon ti-plus"></i>Administar Vehiculo </a>
                 </li>
 
                 <li>
