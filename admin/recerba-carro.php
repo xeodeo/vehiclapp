@@ -85,153 +85,95 @@ if (strlen($_SESSION['vpmsaid']==0)) {
                               <div class="row">
                               <?php
 $query = "SELECT * FROM tb_mapeos WHERE estado_espacio IN ('LIBRE', 'OCUPADO')";
+
+
 $result = mysqli_query($con, $query);
 
-if ($result) {
-    while ($row = mysqli_fetch_assoc($result)) {
-        $id_map = $row['id_map'];
-        $nro_espacio = $row['nro_espacio'];
-        $estado_espacio = $row['estado_espacio'];
+$mapeos = $result->fetch_all(MYSQLI_ASSOC);
 
-        echo '<div class="col">';
-        echo '<center>';
-        echo '<h2>' . $nro_espacio . '</h2>';
+foreach ($mapeos as $mapeo) {
+    $id_map = $mapeo['id_map'];
+    $nro_espacio = $mapeo['nro_espacio'];
+    $estado_espacio = $mapeo['estado_espacio'];
 
-        // Establece el mismo estilo de tamaño para ambos botones
-        echo '<button class="btn ';
+    if($estado_espacio == "LIBRE"){ ?>
+            <div class="col">
+            <center>
+            <h2><?php echo $nro_espacio;?></h2>
+                <button class="btn btn-success" style="width: 40%;height: 114px" data-toggle="modal" data-target="#modal_<?php echo $id_map;?>">
+                <p class="text-white"><?php echo $estado_espacio;?></p>
+                </button>
+                <!-- Button trigger modal -->
 
-        if ($estado_espacio === 'OCUPADO') {
-            echo 'btn-danger custom-btn" ';
-        } else {
-            echo 'btn-success" ';
-        }
 
-        // Asegúrate de que el botón para "LIBRE" no tenga una imagen de fondo
-        if ($estado_espacio === 'LIBRE') {
-            echo 'style="width: 100px; height: 100px;"'; // Establece el tamaño deseado
-        }
-
-        echo ' data-toggle="modal" data-target="#modal' . $id_map . '">';
-        echo '<br>';
-        echo '</button>'; // Cierra el botón
-
-        // Muestra el estado debajo del botón (puedes eliminar esta línea si no deseas mostrar el estado)
-        echo '<p class="text-white">' . $estado_espacio . '</p>';
-
-        // Resto del código del modal aquí...
-        // Agrega el contenido de la ventana modal que permitirá seleccionar la placa.
-        if ($estado_espacio === 'LIBRE') {
-            echo '
-            <div class="modal fade " id="modal' . $id_map . '" tabindex="-1">
-                <div class="modal-dialog  ">
-                    <div class="modal-content bg-dark text-white">
-                        <div class="modal-header">
-                            <h5 class="modal-title text-white text-uppercase"  id="exampleModalLabel">Ingreso de Vehículo</h5>
-                        </div>
-                        <div class="modal-body">
-                            <div class="form-group text-white">
+<!-- Modal -->
+<div class="modal fade " id="modal_<?php echo $id_map;?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content bg-dark">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Ingreso del vehiculo</h5>
+      </div>
+      <div class="modal-body">
+      <div class="form-group text-white">
                                 <label>Seleccione una opción:</label> <br><br>
-                                <select id="opcion_modal_' . $id_map . '" class="form-control bg-secondary text-white" data-id_map="' . $id_map . '">
+                                <select id="opcion_modal_<?php echo $id_map;?>" class="form-control bg-secondary text-white" data-id_map="' . $id_map . '">
                                 <option value="control">Seleccione el Rol</option>
                                 <option value="visitante">Visitante</option>
                                 <option value="residente">Residente</option>
                                 </select>
                             </div> 
-        
-                            <div id="opciones_visitante_' . $id_map . '" style="display:none" class="opcion-container" data-id_map="' . $id_map . '">
-                                <div class="form-group text-white">
-                                    <label>Documento</label>
-                                    <input type="text" class="form-control">
-                                    <label>Placa</label>
-                                    <input type="text" id="placa_' . $id_map . '" maxlength="6" class="form-control">
-                                </div>
-                            </div>
-        
-                            <div id="opciones_residente_' . $id_map . '" style="display:none" class="opcion-container" data-id_map="' . $id_map . '">
-                                <div class="form-grop row">
-                                <label for="" class="col-sm-2 col-form-label">Placa:</label>
-                                <div class="col-sm-6">
-                                <input type="text" id="placa_' . $id_map . '" maxlength="6" class="form-control">
-                                </div>
-                                <div class="col-sm-2">
-                                <button class="btn btn-primary" id="buscar_' .$id_map. '">Buscar</button>
-                                </div>
-                                </div>
-                                <br>
-                                <div class="form-grop row">
-                                <label for="" class="col-sm-3 col-form-label">Nombre:</label>
-                                <div class="col-sm-7">
-                                <input type="text" name="" id="" class="form-control">
-                                </div>
-                                </div>
-                                <br>
-                                <div class="form-grop row">
-                                <label for="" class="col-sm-3 col-form-label">Telefono:</label>
-                                <div class="col-sm-7">
-                                <input type="text" name="" id="" class="form-control">
-                                </div>
-                                </div>
-                                <br>
-                                <div class="form-grop row">
-                                <label for="" class="col-sm-3 col-form-label">Dia de ingreso:</label>
-                                <div class="col-sm-7">
-                                <?php
-                                date_default_timezone_set("America/Bogota");
-                                $fecha = date("Y-m-d");
-                                ?>
-                                <input type="date" name="fecha" id="fecha_' . $id_map . '" class="form-control">                      
-                                </div>
-                                </div>
-                                <div class="form-grop row">
-                                <label for="" class="col-sm-3 col-form-label">Hora:</label>
-                                <div class="col-sm-7">
-                                <?php
-                                date_default_timezone_set("America/Bogota");
-                                $hora = date("H:i:s"); // Formato de hora: HH:MM:SS
-                                ?>
-                                <input type="time" name="hora" id="hora' . $id_map . '" class="form-control">
-                                </div>
-                                </div>
-
-                            </div>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
-                            <button type="button" class="btn btn-primary">Guardar</button>
-                        </div>
-                    </div>
-                </div>
+        <div id="opciones_visitante_<?php echo $id_map; ?>" class="opcion-container" style="display: none;">
+            <div class="form-group text-white">
+                    <label>Documento</label>
+                    <input type="text" class="form-control">
+                    <label>Placa</label>
+                    <input type="text" id="placa_<?php echo $id_map;?>" maxlength="6" class="form-control">
             </div>
-            ';
-        }
+        </div>
         
-        echo '</center>';
-        echo '</div>';
+        <div id="opciones_residente_<?php echo $id_map; ?>" class="opcion-container" style="display: none;">
+          <!-- Contenido para la opción "Residente" -->
+          <p>nokas</p>
+
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>  
+            </center>
+        </div>
+    <?php
     }
-} else {
-    echo 'Error en la consulta: ' . mysqli_error($con);
+    if($estado_espacio == "OCUPADO"){ ?>
+        <div class="col">
+        <center>
+            <h2><?php echo $nro_espacio;?></h2>
+            <button class="btn btn-danger">
+            <img src="images/auto1.png" width="60px" alt="">
+            
+            </button>
+            <p class="text-white"><?php echo $estado_espacio;?></p>
+        </center>
+    </div>
+<?php
 }
-?>
+                            ?>
 
-                              
+    <?php
+            }
+                              ?>
 
 
-<style>
-    .custom-btn {
-        width: 100%;
-        height: 114px;
-        background-image: url('images/auto1.png'); /* Ruta de la imagen del auto */
-        background-size: contain; /* Ajusta la imagen al tamaño del botón */
-        background-repeat: no-repeat; /* Evita la repetición de la imagen */
-        background-position: center center; /* Centra la imagen horizontal y verticalmente */
-        color: #fff; /* Color del texto */
-    }
-</style>
 
 
                               </div>
 
                             </div>
+
                             
                         </div>
                         
@@ -263,27 +205,29 @@ if ($result) {
 <!-- Scripts -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
-  $(document).ready(function () {
-    // Script para mostrar/ocultar elementos según opción seleccionada en <select>
-    $('select[id^="opcion_modal"]').change(function () {
-      var selectedOption = $(this).val();
-      var id_map = $(this).attr('data-id_map');
+$(document).ready(function() {
+  // Escucha cambios en el select
+  $('select[id^="opcion_modal_"]').change(function() {
+    // Obtén el id_map a partir del id del select
+    var id_map = $(this).attr('id').match(/\d+/)[0];
+    var selectedOption = $(this).val();
 
-      $('.opcion-container[data-id_map="' + id_map + '"]').hide();
+    console.log("id_map:", id_map);
+    console.log("selectedOption:", selectedOption);
 
-      if (selectedOption === 'control') {
-        $('#opciones_residente_' + id_map + ', #opciones_visitante_' + id_map).hide();
-      } else if (selectedOption === 'visitante') {
-        $('#opciones_visitante_' + id_map).show();
-      } else if (selectedOption === 'residente') {
-        $('#opciones_residente_' + id_map).show();
-      }
-    });
+    if (selectedOption == "control") {
+      $('#opciones_visitante_' + id_map).hide();
+      $('#opciones_residente_' + id_map).hide();
+    } else if (selectedOption == "visitante") {
+      $('#opciones_visitante_' + id_map).show();
+      $('#opciones_residente_' + id_map).hide();
+    }
 
-    // Script para validar placas
+    // Resto del código para mostrar/ocultar opciones
+
+    // Validación de placa
     var alertaMostrada = false;
-
-    $("[id^='placa_']").on("blur", function () {
+    $("[id^='placa_" + id_map + "']").on("blur", function () {
       var placaInput = $(this).val().trim().toUpperCase();
       var placaPattern = /^[A-Z]{3}\d{3}$/;
 
@@ -295,77 +239,18 @@ if ($result) {
       }
     });
 
-    $("[id^='placa_']").on("input", function () {
+    $("[id^='placa_" + id_map + "']").on("input", function () {
       $(this).val($(this).val().toUpperCase());
 
       if (alertaMostrada) {
         alertaMostrada = false;
       }
     });
-
-    // Script para establecer la fecha actual en campos de fecha
-    $('input[type="date"].form-control').each(function () {
-      var id = $(this).attr('id');
-      var hoy = new Date();
-      var dia = hoy.getDate();
-      var mes = hoy.getMonth() + 1;
-      var anio = hoy.getFullYear();
-
-      if (mes < 10) {
-        mes = "0" + mes;
-      }
-      if (dia < 10) {
-        dia = "0" + dia;
-      }
-
-      var fechaActual = anio + "-" + mes + "-" + dia;
-      $("#" + id).val(fechaActual);
-    });
-
-    // Script para establecer la hora actual en campos de hora
-    $('input[type="time"].form-control').each(function () {
-      var id = $(this).attr('id');
-      var ahora = new Date();
-      var hora = ahora.getHours();
-      var minutos = ahora.getMinutes();
-      var segundos = ahora.getSeconds();
-
-      if (hora < 10) {
-        hora = "0" + hora;
-      }
-      if (minutos < 10) {
-        minutos = "0" + minutos;
-      }
-      if (segundos < 10) {
-        segundos = "0" + segundos;
-      }
-
-      var horaActual = hora + ":" + minutos + ":" + segundos;
-      $("#" + id).val(horaActual);
-    });
   });
-</script>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script>
-  $(document).ready(function () {
-    // Agregar un controlador de clic a todos los botones que tengan IDs que coincidan con el patrón "buscar_"
-    $('button[id^="buscar_"]').on('click', function () {
-      // Obtener el ID del botón actual (por ejemplo, "buscar_25")
-      var buttonId = $(this).attr('id');
-      // Extraer el número de identificación de la cadena para obtener el número de identificación
-      var modalId = buttonId.split('_')[1];
-
-      // Construir el ID del campo de placa y obtener su valor
-      var placaId = 'placa_' + modalId;
-      var placaValue = $('#'+placaId).val();
-
-      // Mostrar el valor de la placa en una alerta
-      alert(placaValue);
-    });
-  });
+});
 </script>
 
-<script src="https://cdn.jsdelivr.net/npm/jquery@2.2.4/dist/jquery.min.js"></>
+<script src="https://cdn.jsdelivr.net/npm/jquery@2.2.4/dist/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.4/dist/umd/popper.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/jquery-match-height@0.7.2/dist/jquery.matchHeight.min.js"></script>
