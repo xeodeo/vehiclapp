@@ -154,7 +154,7 @@ if ($result) {
                                 <input type="text" id="placa_' . $id_map . '" maxlength="6" class="form-control">
                                 </div>
                                 <div class="col-sm-2">
-                                <button class="btn btn-primary">Buscar</button>
+                                <button class="btn btn-primary" id="buscar_' .$id_map. '">Buscar</button>
                                 </div>
                                 </div>
                                 <br>
@@ -263,90 +263,73 @@ if ($result) {
 <!-- Scripts -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
-    $(document).ready(function () {
-        // Escucha el evento de cambio en todos los elementos <select> con id que comienza con "opcion_modal"
-        $('select[id^="opcion_modal"]').change(function () {
-            var selectedOption = $(this).val();
-            var id_map = $(this).attr('data-id_map');
+  $(document).ready(function () {
+    // Script para mostrar/ocultar elementos según opción seleccionada en <select>
+    $('select[id^="opcion_modal"]').change(function () {
+      var selectedOption = $(this).val();
+      var id_map = $(this).attr('data-id_map');
 
-            // Oculta todos los elementos con la clase "opcion-container" específicos para este id_map
-            $('.opcion-container[data-id_map="' + id_map + '"]').hide();
+      $('.opcion-container[data-id_map="' + id_map + '"]').hide();
 
-            // Muestra los elementos correspondientes según la opción seleccionada para este id_map
-            if (selectedOption === 'control') {
-                $('#opciones_residente_' + id_map).hide();
-                $('#opciones_visitante_' + id_map).hide();
-            } else if (selectedOption === 'visitante') {
-                $('#opciones_visitante_' + id_map).show();
-                $('#opciones_residente_' + id_map).hide();
-            } else if (selectedOption === 'residente') {
-                $('#opciones_visitante_' + id_map).hide();
-                $('#opciones_residente_' + id_map).show();
-            }
-        });
+      if (selectedOption === 'control') {
+        $('#opciones_residente_' + id_map + ', #opciones_visitante_' + id_map).hide();
+      } else if (selectedOption === 'visitante') {
+        $('#opciones_visitante_' + id_map).show();
+      } else if (selectedOption === 'residente') {
+        $('#opciones_residente_' + id_map).show();
+      }
     });
-</script>
-<script>
-$(document).ready(function() {
+
+    // Script para validar placas
     var alertaMostrada = false;
 
-    // Cambia el selector para apuntar a elementos con IDs únicos
-    $("[id^='placa_']").on("blur", function() {
-        validarPlaca($(this));
+    $("[id^='placa_']").on("blur", function () {
+      var placaInput = $(this).val().trim().toUpperCase();
+      var placaPattern = /^[A-Z]{3}\d{3}$/;
+
+      if (!placaPattern.test(placaInput) && !alertaMostrada) {
+        alert("Por favor, ingrese una placa colombiana válida (Ejemplo: ABC123).");
+        $(this).val('');
+        $(this).focus();
+        alertaMostrada = true;
+      }
     });
 
-    // Cambia el selector para apuntar a elementos con IDs únicos
-    $("[id^='placa_']").on("input", function() {
-        // Convertir el texto a mayúsculas
-        $(this).val($(this).val().toUpperCase());
+    $("[id^='placa_']").on("input", function () {
+      $(this).val($(this).val().toUpperCase());
 
-        if (alertaMostrada) {
-            alertaMostrada = false;
-        }
+      if (alertaMostrada) {
+        alertaMostrada = false;
+      }
     });
 
-    function validarPlaca(input) {
-        var placaInput = input.val().trim().toUpperCase();
-        var placaPattern = /^[A-Z]{3}\d{3}$/; // Patrón para placas colombianas (3 letras seguidas de 3 números)
-
-        if (!placaPattern.test(placaInput) && !alertaMostrada) {
-            alert("Por favor, ingrese una placa colombiana válida (Ejemplo: ABC123).");
-            input.val(''); // Limpiar el campo si no es válido
-            input.focus(); // Darle enfoque nuevamente al campo
-            alertaMostrada = true;
-        }
-    }
-});
-</script>
-<script>
-  $(document).ready(function () {
+    // Script para establecer la fecha actual en campos de fecha
     $('input[type="date"].form-control').each(function () {
       var id = $(this).attr('id');
       var hoy = new Date();
       var dia = hoy.getDate();
       var mes = hoy.getMonth() + 1;
       var anio = hoy.getFullYear();
+
       if (mes < 10) {
         mes = "0" + mes;
       }
       if (dia < 10) {
         dia = "0" + dia;
       }
+
       var fechaActual = anio + "-" + mes + "-" + dia;
       $("#" + id).val(fechaActual);
     });
-  });
-</script>
-<script>
-  $(document).ready(function () {
+
+    // Script para establecer la hora actual en campos de hora
     $('input[type="time"].form-control').each(function () {
       var id = $(this).attr('id');
       var ahora = new Date();
       var hora = ahora.getHours();
       var minutos = ahora.getMinutes();
       var segundos = ahora.getSeconds();
-      
-      // Formatear la hora y minutos para tener dos dígitos
+
       if (hora < 10) {
         hora = "0" + hora;
       }
@@ -356,9 +339,28 @@ $(document).ready(function() {
       if (segundos < 10) {
         segundos = "0" + segundos;
       }
-      
+
       var horaActual = hora + ":" + minutos + ":" + segundos;
       $("#" + id).val(horaActual);
+    });
+  });
+</script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+  $(document).ready(function () {
+    // Agregar un controlador de clic a todos los botones que tengan IDs que coincidan con el patrón "buscar_"
+    $('button[id^="buscar_"]').on('click', function () {
+      // Obtener el ID del botón actual (por ejemplo, "buscar_25")
+      var buttonId = $(this).attr('id');
+      // Extraer el número de identificación de la cadena para obtener el número de identificación
+      var modalId = buttonId.split('_')[1];
+
+      // Construir el ID del campo de placa y obtener su valor
+      var placaId = 'placa_' + modalId;
+      var placaValue = $('#'+placaId).val();
+
+      // Mostrar el valor de la placa en una alerta
+      alert(placaValue);
     });
   });
 </script>
