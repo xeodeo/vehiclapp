@@ -20,22 +20,22 @@ if(isset($_POST['submit']))
      
     $query=mysqli_query($con, "insert into  tblvehiculo(Tipo,Placa,NombreDueño,TelefonoDueño,EmailDueño,Documento) value('$catename','$vehcomp','$vehreno','$ownername','$ownercontno','$doc')");
     if ($query) {
-echo "<script>alert('Vehicle Entry Detail has been added');</script>";
+echo "<script>alert('a vehicle has been added successfully');</script>";
 echo "<script>window.location.href ='manage-incomingvehicle.php'</script>";
   }
   else
     {
-     echo "<script>alert('Something Went Wrong. Please try again.');</script>";       
+     echo "<script>alert('Algo salió mal. Inténtalo de nuevo.');</script>";       
     }
 
   
 }
   ?>
 <!doctype html>
-<html class="no-js" lang="">
+<html class="no-js bg-dark" lang="">
 <head>
     
-    <title>VPMS - Add Vehicle</title>
+    <title>Registro Vehículo</title>
    
 
     <link rel="apple-touch-icon" href="https://i.imgur.com/QRAUqs9.png">
@@ -61,23 +61,23 @@ echo "<script>window.location.href ='manage-incomingvehicle.php'</script>";
 
    <?php include_once('includes/header.php');?>
 
-        <div class="breadcrumbs">
-            <div class="breadcrumbs-inner">
+        <div class="breadcrumbs bg-dark">
+            <div class="breadcrumbs-inner bg-dark">
                 <div class="row m-0">
                     <div class="col-sm-4">
-                        <div class="page-header float-left">
+                        <div class="page-header float-left bg-dark text-white">
                             <div class="page-title">
-                                <h1>Dashboard</h1>
+                                <h1>Panel</h1>
                             </div>
                         </div>
                     </div>
                     <div class="col-sm-8">
-                        <div class="page-header float-right">
+                        <div class="page-header float-right bg-dark">
                             <div class="page-title">
-                                <ol class="breadcrumb text-right">
-                                    <li><a href="dashboard.php">Dashboard</a></li>
-                                    <li><a href="add-vehicle.php">Vehicle</a></li>
-                                    <li class="active">Add Vehicle</li>
+                                <ol class="breadcrumb text-right bg-dark text-white">
+                                    <li><a href="dashboard.php">Panel</a></li>
+                                    <li><a href="add-vehicle.php">Vehículo</a></li>
+                                    <li class="active">Registro Vehículo</li>
                                 </ol>
                             </div>
                         </div>
@@ -86,7 +86,7 @@ echo "<script>window.location.href ='manage-incomingvehicle.php'</script>";
             </div>
         </div>
 
-        <div class="content">
+        <div class="content bg-secondary">
             <div class="animated fadeIn">
 
 
@@ -101,10 +101,10 @@ echo "<script>window.location.href ='manage-incomingvehicle.php'</script>";
 
               
 
-                    <div class="col-lg-12">
-                        <div class="card">
-                            <div class="card-header">
-                                <strong>Add </strong> Vehicle
+                    <div class="col-lg-12 bg-dark">
+                        <div class="card bg-dark text-white">
+                            <div class="card-header bg-dark">
+                                <strong>Registro </strong> Vehículo
                             </div>
                             <div class="card-body card-block">
                                 <form action="" method="post" enctype="multipart/form-data" class="form-horizontal">
@@ -147,7 +147,7 @@ echo "<script>window.location.href ='manage-incomingvehicle.php'</script>";
                                     </div>
                                     
                                     
-                                   <p style="text-align: center;"> <button type="submit" class="btn btn-primary btn-sm" name="submit" >REGSITAR VEHICULO</button></p>
+                                   <p style="text-align: center;"> <button type="submit" class="btn btn-primary btn-sm" name="submit" >Registrar Vehículo</button></p>
                                 </form>
                             </div>
                             
@@ -168,7 +168,7 @@ echo "<script>window.location.href ='manage-incomingvehicle.php'</script>";
         </div><!-- .animated -->
     </div><!-- .content -->
 
-    <div class="clearfix"></div>
+    <div class="clearfix bg-dark"></div>
 
    <?php include_once('includes/footer.php');?>
 
