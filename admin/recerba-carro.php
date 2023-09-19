@@ -290,13 +290,33 @@ $('#btn_registrar_ticket<?php echo $id_map;?>').click(function () {
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <h5 class="modal-title text-dark  " id="exampleModalLabel">Modal title</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-        ...
+                <script>
+                  $('#modal2_<?php echo $id_map;?>').click(function(){
+                    var placa = $('#placa2_<?php echo $id_map;?>').val();
+                    var id_map = "<?php echo $id_map;?>";
+
+                    if(placa == ""){
+                      alert("Tienes que llenar el campo placa");
+                      $('#placa2_<?php echo $id_map;?>').focus();
+                    } else{
+                      var url = 'controlador-buscar-cliente.php';
+                      $.get(url, {placa:placa,id_map:id_map}, function(datos){
+                        $('#respuesta_buscar_cliente<?php echo $id_map;?>').html(datos);
+                      });
+                    }
+                  });
+                </script>
+
+                <div  id="respuesta_buscar_cliente<?php echo $id_map;?>">
+
+                </div>
+
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
