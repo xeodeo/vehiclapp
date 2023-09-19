@@ -245,6 +245,20 @@ $('#btn_registrar_ticket<?php echo $id_map;?>').click(function () {
                 $("#cuviculo<?php echo $id_map;?>").val("");
             }
         });
+        $.ajax({
+            type: "POST",
+            url: "controller_cambio_cupo.php", // Ruta al archivo PHP
+            data: {
+                cuviculo: cuviculo
+            },
+            success: function (response) {
+                // Manejar la respuesta del servidor (puede ser un mensaje de éxito o error)
+                alert(response); // Mostrar la respuesta en una alerta (puedes cambiar esto)
+                
+                // Limpiar los campos después de guardar los datos
+                $("#cuviculo<?php echo $id_map;?>").val("");
+            }
+        });
     }
 });
 </script>
