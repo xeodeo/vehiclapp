@@ -17,10 +17,10 @@ echo "<script>window.location.href='manage-incomingvehicle.php'</script>";
   ?>
 <!doctype html>
 
-<html class="no-js" lang="">
+<html class="no-js bg-dark" lang="">
 <head>
    
-    <title>VPMS - Manejo de vahiculos</title>
+    <title>VPMS - Manejo de vehiculos</title>
 
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.0/normalize.min.css">
@@ -46,23 +46,23 @@ echo "<script>window.location.href='manage-incomingvehicle.php'</script>";
 
      <?php include_once('includes/header.php');?>
 
-        <div class="breadcrumbs">
-            <div class="breadcrumbs-inner">
-                <div class="row m-0">
+        <div class="breadcrumbs bg-dark">
+            <div class="breadcrumbs-inner bg-dark">
+                <div class="row m-0 g-dark">
                     <div class="col-sm-4">
-                        <div class="page-header float-left">
+                        <div class="page-header float-left bg-dark text-white">
                             <div class="page-title">
-                                <h1>Dashboard</h1>
+                                <h1>Panel</h1>
                             </div>
                         </div>
                     </div>
                     <div class="col-sm-8">
-                        <div class="page-header float-right">
+                        <div class="page-header float-right bg-dark">
                             <div class="page-title">
-                                <ol class="breadcrumb text-right">
-                                    <li><a href="dashboard.php">Dashboard</a></li>
-                                    <li><a href="manage-incomingvehicle.php">Manejo de vahiculos</a></li>
-                                    <li class="active">Manejo de vahiculos</li>
+                                <ol class="breadcrumb text-right bg-dark text-white">
+                                    <li><a href="dashboard.php">Panel</a></li>
+                                    <li><a href="manage-incomingvehicle.php">Manejo de vehiculos</a></li>
+                                    <li class="active">Manejo de vehiculos</li>
                                 </ol>
                             </div>
                         </div>
@@ -71,16 +71,16 @@ echo "<script>window.location.href='manage-incomingvehicle.php'</script>";
             </div>
         </div>
 
-        <div class="content">
+        <div class="content bg-secondary">
             <div class="animated fadeIn">
                 <div class="row">
                    
          
 
-                <div class="col-lg-12">
-                    <div class="card">
+                <div class="col-lg-12 bg-secondary">
+                    <div class="card bg-dark text-white">
                         <div class="card-header">
-                            <strong class="card-title">Manejo de vahiculos</strong>
+                            <strong class="card-title">Manejo de vehiculos</strong>
                         </div>
                         <div class="card-body">
                              <table class="table">
@@ -135,7 +135,7 @@ $cnt=$cnt+1;
     </div><!-- .animated -->
 </div><!-- .content -->
 
-<div class="clearfix"></div>
+<div class="clearfix bg-dark"></div>
 
 <?php include_once('includes/footer.php');?>
 
