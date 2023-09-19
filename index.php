@@ -54,43 +54,42 @@
                     <div class="divider-custom-line"></div>
                 </div>
                 <!-- Portfolio Grid Items-->
-                <div class="row justify-content-center">
-                    <!-- Portfolio Item 1-->
-                    <div class="col-md-6 col-lg-4 mb-5">
-                        <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal1">
-                            <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-                                <div class="portfolio-item-caption-content text-center text-white"></div>
-                            </div>
-                            <img class="img-fluid" src="https://scontent.xx.fbcdn.net/v/t1.15752-9/374967622_868675431642625_6593321907094396503_n.jpg?stp=dst-jpg_s206x206&_nc_cat=108&ccb=1-7&_nc_sid=aee45a&_nc_eui2=AeFgS26iaIkCAz8YnYbaIqmSjyn3GVPxbtuPKfcZU_Fu27Gh_kJt2nPuaPBW65uJmpbaVifZ7FjLyMXLvnp6tcDL&_nc_ohc=HVJXYjF_XJYAX9ztAd0&_nc_ad=z-m&_nc_cid=0&_nc_ht=scontent.xx&oh=03_AdTRSeJTQtFZH3w8YBeQFLWoFo879CT2SQEn37SoLBfuiQ&oe=6522A832" alt="..." />
-                        </div>
-                    </div>
-                    <!-- Portfolio Item 2-->
-                    <div class="col-md-6 col-lg-4 mb-5">
-                        <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal2">
-                            <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-                                <div class="portfolio-item-caption-content text-center text-white"></div>
-                            </div>
-                            <img class="img-fluid" src="https://scontent.xx.fbcdn.net/v/t1.15752-9/375016701_1929098990807964_3268191671796451213_n.png?stp=dst-png_p206x206&_nc_cat=104&ccb=1-7&_nc_sid=aee45a&_nc_eui2=AeHHcaH7JrC0SWMys5c9hmBZcvF2yVIpf1dy8XbJUil_V3UxD8WJYaGRZz_EzV1hlDYglqpgH-DCiQcUbGYtwWF2&_nc_ohc=uo6e-r7A5E4AX_hCaj3&_nc_ad=z-m&_nc_cid=0&_nc_ht=scontent.xx&oh=03_AdTquVlV-IW90Za7EnScLN6qVir8AYNtR56EU59rv03jUw&oe=6522C7A9" alt="..." />
-                        </div>
-                    </div>
-                    <!-- Portfolio Item 3-->
-                    <div class="col-md-6 col-lg-4 mb-5">
-                        <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal3">
-                            <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-                                <div class="portfolio-item-caption-content text-center text-white"></div>
-                            </div>
-                            <img class="img-fluid" src="https://scontent.xx.fbcdn.net/v/t1.15752-9/375014261_6570116753035539_8950523131387268435_n.jpg?stp=dst-jpg_s280x280&_nc_cat=106&ccb=1-7&_nc_sid=aee45a&_nc_eui2=AeFjP0GmuRjTPcrXrDHicyvWtidWhKfynuC2J1aEp_Ke4FAfNMvZagW5OAHiizeNdhd2pFNcK7IGokCdEbIQMIGU&_nc_ohc=wvYWDBdP0ugAX-fswWm&_nc_ad=z-m&_nc_cid=0&_nc_ht=scontent.xx&oh=03_AdTHmamKRYFoge2kI5V5W_dLalIbdAPl0b5X8FQjDlm-NQ&oe=6522C7D1" alt="..." />
-                        </div>
-                    </div>
-                    <!-- Portfolio Item 4-->
-                    <div class="col-md-6 col-lg-4 mb-5 mb-lg-0">
-                        <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal4">
-                            <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-                                <div class="portfolio-item-caption-content text-center text-white"></div>
-                            </div>
-                            <img class="img-fluid" src="https://scontent.fbog14-1.fna.fbcdn.net/v/t39.30808-6/322368820_1161180208096766_2758335059941957802_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=5614bc&_nc_eui2=AeESLcrG_CNdZzetvkeNsdlDwf_0UvvtGjnB__RS--0aOcuFr_CzPafXRtK26xF6SOzv8ePZhhmUCpZCJBBUBa_e&_nc_ohc=DuYp6cMy2CsAX8feyKc&_nc_zt=23&_nc_ht=scontent.fbog14-1.fna&oh=00_AfDWyuM9e-afW4OGc93T-_ihB2UgfLZUcnJFwAWffpANpw&oe=64FF705E" alt="..." />
-                        </div>
-                    </div>
+                <div class="row">
+    <!-- Primera fila de imágenes -->
+    <div class="col-md-6 col-lg-6 mb-5">
+        <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal1">
+            <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
+                <div class="portfolio-item-caption-content text-center text-white"></div>
+            </div>
+            <img class="img-fluid" src="admin/images/jhanes.png" alt="..." />
+        </div>
+    </div>
+    <div class="col-md-6 col-lg-6 mb-5">
+        <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal2">
+            <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
+                <div class="portfolio-item-caption-content text-center text-white"></div>
+            </div>
+            <img class="img-fluid" src="admin/images/jherman.png" alt="..." />
+        </div>
+    </div>
+    <!-- Segunda fila de imágenes -->
+    <div class="col-md-6 col-lg-6 mb-5">
+        <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal3">
+            <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
+                <div class="portfolio-item-caption-content text-center text-white"></div>
+            </div>
+            <img class="img-fluid" src="admin/images/felipe.png" alt="..." />
+        </div>
+    </div>
+    <div class="col-md-6 col-lg-6 mb-5">
+        <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#portfolioModal4">
+            <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
+                <div class="portfolio-item-caption-content text-center text-white"></div>
+            </div>
+            <img class="img-fluid" src="admin/images/images.png" alt="..." />
+        </div>
+    </div>
+</div>
 
         </section>
           <!-- Portfolio Modals-->
@@ -112,9 +111,9 @@
                                         <div class="divider-custom-line"></div>
                                     </div>
                                     <!-- Portfolio Modal - Image-->
-                                    <img class="img-fluid rounded mb-5" src="https://scontent.fbog14-1.fna.fbcdn.net/v/t39.30808-6/310525160_2899914713644668_3919885179878821364_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=5614bc&_nc_eui2=AeESoHqirj4MBvCeMqSul6D1X8GX3qsTjetfwZfeqxON6-hr773v80Bz4UocavO-Vp2NPD5RfjVayijpl5e_NYnL&_nc_ohc=Pnyaz_7hrD8AX8EziPu&_nc_zt=23&_nc_ht=scontent.fbog14-1.fna&oh=00_AfDBR11UjmrhaH-01yd1kSH62H51Y_sTJ7DGt2imjRaLNA&oe=64FF5B4D" alt="..." />
+                                    <img class="img-fluid rounded mb-5" src="admin/images/jhanes.png" alt="..." />
                                     <!-- Portfolio Modal - Text-->
-                                    <p class="mb-4 text-white">GAY</p>
+                                    <p class="mb-4 text-white">Esta persona es extremadamente orientada a objetivos y siempre busca oportunidades para avanzar en la vida. Es creativo, arriesgado y está dispuesto a trabajar incansablemente para alcanzar sus metas. Tiene una mentalidad emprendedora y ve los desafíos como oportunidades para crecer. Suele ser líder natural, persuasivo y con una gran capacidad para inspirar a otros.</p>
                                     <button class="btn btn-secondary" data-bs-dismiss="modal">
                                         <i class="fas fa-xmark fa-fw"></i>
                                         Cerrar
@@ -144,9 +143,9 @@
                                         <div class="divider-custom-line"></div>
                                     </div>
                                     <!-- Portfolio Modal - Image-->
-                                    <img class="img-fluid rounded mb-5" src="assets/img/portfolio/cake.png" alt="..." />
+                                    <img class="img-fluid rounded mb-5" src="admin/images/jherman.png" alt="..." />
                                     <!-- Portfolio Modal - Text-->
-                                    <p class="mb-4 text-white">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia neque assumenda ipsam nihil, molestias magnam, recusandae quos quis inventore quisquam velit asperiores, vitae? Reprehenderit soluta, eos quod consequuntur itaque. Nam.</p>
+                                    <p class="mb-4 text-white">Esta persona tiende a ser más reservada y tranquila. Prefiere la introspección y el tiempo a solas para recargar energías. Es buen pensador profundo, analítico y creativo. Demuestra ser excelente oyente y consejero, ya que valora las relaciones personales cercanas. Suele destacar en campos que requieren concentración y atención a los detalles.</p>
                                     <button class="btn btn-secondary" data-bs-dismiss="modal">
                                         <i class="fas fa-xmark fa-fw"></i>
                                         Cerrar
@@ -176,9 +175,9 @@
                                         <div class="divider-custom-line"></div>
                                     </div>
                                     <!-- Portfolio Modal - Image-->
-                                    <img class="img-fluid rounded mb-5" src="assets/img/portfolio/circus.png" alt="..." />
+                                    <img class="img-fluid rounded mb-5" src="admin/images/felipe.png" alt="..." />
                                     <!-- Portfolio Modal - Text-->
-                                    <p class="mb-4 text-white">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia neque assumenda ipsam nihil, molestias magnam, recusandae quos quis inventore quisquam velit asperiores, vitae? Reprehenderit soluta, eos quod consequuntur itaque. Nam.</p>
+                                    <p class="mb-4 text-white">El tiene una personalidad que es conocida por su amor por la aventura y la espontaneidad. Siempre está dispuesto a probar cosas nuevas, explorar lugares desconocidos y buscar experiencias emocionantes. Es optimista y abierto a nuevas amistades y oportunidades. Es aventurero, suele disfrutar de trabajos que les permitan viajar y descubrir el mundo.</p>
                                     <button class="btn btn-secondary" data-bs-dismiss="modal">
                                         <i class="fas fa-xmark fa-fw"></i>
                                         Cerrar
@@ -208,9 +207,9 @@
                                         <div class="divider-custom-line"></div>
                                     </div>
                                     <!-- Portfolio Modal - Image-->
-                                    <img class="img-fluid rounded mb-5" src="assets/img/portfolio/game.png" alt="..." />
+                                    <img class="img-fluid rounded mb-5" src="admin/images/images.png" alt="..." />
                                     <!-- Portfolio Modal - Text-->
-                                    <p class="mb-4 text-white">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia neque assumenda ipsam nihil, molestias magnam, recusandae quos quis inventore quisquam velit asperiores, vitae? Reprehenderit soluta, eos quod consequuntur itaque. Nam.</p>
+                                    <p class="mb-4 text-white">Esta persona tiene una gran empatía y preocupación por los demás. Es altruistas y comprometido con causas sociales y humanitarias. Siempre esta dispuestos a ayudar a quienes más lo necesitan y trabajar para hacer del mundo un lugar mejor. Suele tener una profunda conexión con los valores éticos y suelen trabajar en profesiones relacionadas con el servicio a la comunidad o el activismo.</p>
                                     <button class="btn btn-secondary" data-bs-dismiss="modal">
                                         <i class="fas fa-xmark fa-fw"></i>
                                         Cerrar
