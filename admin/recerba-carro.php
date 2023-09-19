@@ -30,7 +30,8 @@ if (strlen($_SESSION['vpmsaid']==0)) {
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
 
     <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/html5shiv/3.7.3/html5shiv.min.js"></script> -->
-
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    
 </head>
 <body>
    <?php include_once('includes/sidebar.php');?>
@@ -133,13 +134,83 @@ foreach ($mapeos as $mapeo) {
         
         <div id="opciones_residente_<?php echo $id_map; ?>" class="opcion-container" style="display: none;">
           <!-- Contenido para la opción "Residente" -->
-          <p>nokas</p>
+          <div class="modal-body">
+            <div class="form-group row">
+              <label for="" class="col-sm-2 col-form-label">Placa:</label>
+              <div class="col-sm-7">
+                <input type="text" id="placa2_<?php echo $id_map;?>" maxlength="6" class="form-control">
+              </div>
+              <div class="col-sm-2">
+                <button class="btn btn-success" id="btn_buscar_cliente<?php echo $id_map;?>">Buscar</button>
+                <script>
+                  $('#btn_buscar_cliente<?php echo $id_map;?>').click(function(){
+                    var placa = $('#placa2_<?php echo $id_map;?>').val();
+                    if(placa == ""){
+                      alert("Tienes que llenar el campo placa");
+                      $('#placa2_<?php echo $id_map;?>').focus();
+                    } else{
+                      var url = 'controlador-buscar-cliente.php';
+                      $.get(url, {placa:placa}, function(datos){
+                        $('#respuesta_buscar_cliente<?php echo $id_map;?>').html(datos);
+                      });
+                    }
+                  });
+                </script>
+                <div id="respuesta_buscar_cliente<?php echo $id_map;?>">
 
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label for="" class="col-sm-3 col-form-label">Nombre:</label>
+              <div class="col-sm-7">
+                <input type="text" class="form-control">
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label for="" class="col-sm-3 col-form-label">Telefono:</label>
+              <div class="col-sm-7">
+                <input type="text" class="form-control">
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label for="" class="col-sm-3 col-form-label">Fecha de entrada:</label>
+              <div class="col-sm-7">
+                <?php
+                date_default_timezone_set("America/caracas");
+                $fechaHora = date("Y-m-d h:i:s");
+                $dia = date('d');
+                $mes = date('m');
+                $ano = date('Y');
+                ?>
+                <input type="date" class="form-control" value="<?php echo $ano."-".$mes."-".$dia;?>">
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label for="" class="col-sm-3 col-form-label">Hora de entrada:</label>
+              <div class="col-sm-7">
+                <?php
+                date_default_timezone_set("America/bogota");
+                $fechaHora = date("Y-m-d h:i:s");
+                $hora = date('h');
+                $minitos = date('i');
+                ?>
+                <input type="tine" class="form-control" value="<?php echo $hora.":".$minitos;?>">
+              </div>
+            </div>
+
+
+
+          </div>
         </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-primary">Guardar</button>
       </div>
     </div>
   </div>
@@ -203,7 +274,6 @@ foreach ($mapeos as $mapeo) {
 <!-- Right Panel -->
 
 <!-- Scripts -->
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
 $(document).ready(function() {
   // Escucha cambios en el select
@@ -221,13 +291,16 @@ $(document).ready(function() {
     } else if (selectedOption == "visitante") {
       $('#opciones_visitante_' + id_map).show();
       $('#opciones_residente_' + id_map).hide();
-    }
+    } else if (selectedOption == "residente") {
+      $('#opciones_visitante_' + id_map).hide();
+      $('#opciones_residente_' + id_map).show();
+    } 
 
     // Resto del código para mostrar/ocultar opciones
 
     // Validación de placa
     var alertaMostrada = false;
-    $("[id^='placa_" + id_map + "']").on("blur", function () {
+    $("[id^='placa_" + id_map + "'], [id^='placa2_" + id_map + "']").on("blur", function () {
       var placaInput = $(this).val().trim().toUpperCase();
       var placaPattern = /^[A-Z]{3}\d{3}$/;
 
@@ -239,7 +312,7 @@ $(document).ready(function() {
       }
     });
 
-    $("[id^='placa_" + id_map + "']").on("input", function () {
+    $("[id^='placa_" + id_map + "'], [id^='placa2_" + id_map + "']").on("input", function () {
       $(this).val($(this).val().toUpperCase());
 
       if (alertaMostrada) {
@@ -249,7 +322,6 @@ $(document).ready(function() {
   });
 });
 </script>
-
 <script src="https://cdn.jsdelivr.net/npm/jquery@2.2.4/dist/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.4/dist/umd/popper.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js"></script>

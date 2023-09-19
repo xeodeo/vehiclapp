@@ -18,7 +18,7 @@ if(isset($_POST['submit']))
     $enteringtime=$_POST['enteringtime'];
     
      
-    $query=mysqli_query($con, "insert into  tblvehiculo(Tipo,Placa,NombreDueño,TelefonoDueño,EmailDueño,Documento) value('$catename','$vehcomp','$vehreno','$ownername','$ownercontno','$doc')");
+    $query=mysqli_query($con, "insert into  tblvehiculo(Tipo,Placa,NombreDueño,TelefonoDueño,EmailDueño,Documento,estado) value('$catename','$vehcomp','$vehreno','$ownername','$ownercontno','$doc','1')");
     if ($query) {
 echo "<script>alert('a vehicle has been added successfully');</script>";
 echo "<script>window.location.href ='manage-incomingvehicle.php'</script>";
