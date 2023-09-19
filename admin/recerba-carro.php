@@ -138,14 +138,79 @@ foreach ($mapeos as $mapeo) {
                     
     </div>
     </div>
+    <div class="form-group row">
+                                                                        <label for="staticEmail" class="col-sm-4 col-form-label">Fecha de ingreso:</label>
+                                                                        <div class="col-sm-8">
+                                                                            <?php
+                                                                            date_default_timezone_set("America/caracas");
+                                                                            $fechaHora = date("Y-m-d h:i:s");
+                                                                            $dia = date('d');
+                                                                            $mes = date('m');
+                                                                            $ano = date('Y');
+                                                                            ?>
+                                                                            <input type="date" class="form-control" id="fecha_ingreso<?php echo $id_map;?>" value="<?php echo $ano."-".$mes."-".$dia; ?>">
+                                                                        </div>
+                                                                    </div>
 
+                                                                    <div class="form-group row">
+                                                                        <label for="staticEmail" class="col-sm-4 col-form-label">Hora de ingreso:</label>
+                                                                        <div class="col-sm-8">
+                                                                            <?php
+                                                                            date_default_timezone_set("America/caracas");
+                                                                            $fechaHora = date("Y-m-d h:i:s");
+                                                                            $hora = date('H');
+                                                                            $minutos = date('i');
+                                                                            ?>
+                                                                            <input type="time" class="form-control" id="hora_ingreso<?php echo $id_map;?>"  value="<?php echo $hora.":".$minutos; ?>">
+                                                                        </div>
+                                                                    </div>
         </div>
+
         
         <div id="opciones_residente_<?php echo $id_map; ?>" class="opcion-container" style="display: none;">
-          <!-- Contenido para la opción "Residente" -->
-          <p>nokas</p>
+            <div class="form-group text-white">
+            <div class="form-group row">
+                    <label for="staticEmail" class="col-sm-3 col-form-label">Placa: <span><b style="color: red">*</b></span></label>
+                                                                        <div class="col-sm-6">
+                                                                            <input type="text" style="text-transform: uppercase" class="form-control" id="placa_<?php echo $id_map;?>" maxlength="6" class="form-control">
+                                                                        </div>
 
+            </div>
+            <div class="form-group row">
+                    <label for="staticEmail" class="col-sm-3 col-form-label">Documento</label>
+                    <div class="col-sm-6">
+                    <input type="text" class="form-control">
+                    
+    </div>
+    </div>
+    <div class="form-group row">
+                                                                        <label for="staticEmail" class="col-sm-4 col-form-label">Fecha de ingreso:</label>
+                                                                        <div class="col-sm-8">
+                                                                            <?php
+                                                                            date_default_timezone_set("America/caracas");
+                                                                            $fechaHora = date("Y-m-d h:i:s");
+                                                                            $dia = date('d');
+                                                                            $mes = date('m');
+                                                                            $ano = date('Y');
+                                                                            ?>
+                                                                            <input type="date" class="form-control" id="fecha_ingreso<?php echo $id_map;?>" value="<?php echo $ano."-".$mes."-".$dia; ?>">
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="form-group row">
+                                                                        <label for="staticEmail" class="col-sm-4 col-form-label">Hora de ingreso:</label>
+                                                                        <div class="col-sm-8">
+                                                                            <?php
+                                                                            date_default_timezone_set("America/caracas");
+                                                                            $fechaHora = date("Y-m-d h:i:s");
+                                                                            $hora = date('H');
+                                                                            $minutos = date('i');
+                                                                            ?>
+                                                                            <input type="time" class="form-control" id="hora_ingreso<?php echo $id_map;?>"  value="<?php echo $hora.":".$minutos; ?>">
+                                                                        </div>
+                                                                    </div>
         </div>
+
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
