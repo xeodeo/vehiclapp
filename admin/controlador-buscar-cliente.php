@@ -5,6 +5,7 @@ include('includes/config.php');
 include('includes/dbconnection.php');
 
 $placa = $_GET['placa'];
+$id_map = $_GET['id_map'];
 
 $id_cliente = '';
 $nombre_cliente = '';
@@ -33,14 +34,14 @@ if($nombre_cliente == ""){
             <div class="form-group row">
               <label for="" class="col-sm-3 col-form-label">Nombre:</label>
               <div class="col-sm-7">
-                <input type="text" class="form-control">
+                <input type="text" class="form-control" id="nombre_cliente<?php echo $id_map;?>">
               </div>
             </div>
 
             <div class="form-group row">
               <label for="" class="col-sm-3 col-form-label">Telefono:</label>
               <div class="col-sm-7">
-                <input type="text" class="form-control">
+                <input type="text" class="form-control" id="telefono<?php echo $id_map;?>">
               </div>
             </div>
     <?php
@@ -51,14 +52,14 @@ if($nombre_cliente == ""){
             <div class="form-group row">
               <label for="" class="col-sm-3 col-form-label">Nombre:</label>
               <div class="col-sm-7">
-                <input type="text" class="form-control" value="<?php echo $nombre_cliente;?>">
+                <input type="text" class="form-control" id="nombre_cliente<?php echo $id_map;?>" value="<?php echo $nombre_cliente;?>">
               </div>
             </div>
 
             <div class="form-group row">
               <label for="" class="col-sm-3 col-form-label">Telefono:</label>
               <div class="col-sm-7">
-                <input type="text" class="form-control" value="<?php echo $telefono_cliente;?>">
+                <input type="text" class="form-control" id="telefono<?php echo $id_map;?>" value="<?php echo $telefono_cliente;?>">
               </div>
             </div>
 

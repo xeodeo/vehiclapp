@@ -136,8 +136,8 @@ foreach ($mapeos as $mapeo) {
           <!-- Contenido para la opción "Residente" -->
           <div class="modal-body">
             <div class="form-group row">
-              <label for="" class="col-sm-2 col-form-label">Placa:</label>
-              <div class="col-sm-7">
+              <label for="" class="col-sm-3 col-form-label">Placa: <span><b style="color: red">*</b></span></label>
+              <div class="col-sm-6">
                 <input type="text" id="placa2_<?php echo $id_map;?>" maxlength="6" class="form-control">
               </div>
               <div class="col-sm-2">
@@ -145,12 +145,14 @@ foreach ($mapeos as $mapeo) {
                 <script>
                   $('#btn_buscar_cliente<?php echo $id_map;?>').click(function(){
                     var placa = $('#placa2_<?php echo $id_map;?>').val();
+                    var id_map = "<?php echo $id_map;?>";
+
                     if(placa == ""){
                       alert("Tienes que llenar el campo placa");
                       $('#placa2_<?php echo $id_map;?>').focus();
                     } else{
                       var url = 'controlador-buscar-cliente.php';
-                      $.get(url, {placa:placa}, function(datos){
+                      $.get(url, {placa:placa,id_map:id_map}, function(datos){
                         $('#respuesta_buscar_cliente<?php echo $id_map;?>').html(datos);
                       });
                     }
@@ -174,7 +176,7 @@ foreach ($mapeos as $mapeo) {
                 $mes = date('m');
                 $ano = date('Y');
                 ?>
-                <input type="date" class="form-control" value="<?php echo $ano."-".$mes."-".$dia;?>">
+                <input type="date" class="form-control" id="fecha_ingreso<?php echo $id_map;?>" value="<?php echo $ano."-".$mes."-".$dia;?>">
               </div>
             </div>
 
@@ -187,9 +189,16 @@ foreach ($mapeos as $mapeo) {
                 $hora = date('h');
                 $minitos = date('i');
                 ?>
-                <input type="tine" class="form-control" value="<?php echo $hora.":".$minitos;?>">
+                <input type="tine" class="form-control" id="hora_ingreso<?php echo $id_map;?>" value="<?php echo $hora.":".$minitos;?>">
               </div>
             </div>
+
+            <div class="form-group row">
+                                                                        <label for="staticEmail" class="col-sm-3 col-form-label">Cuvículo:</label>
+                                                                        <div class="col-sm-7">
+                                                                            <input type="text" class="form-control" id="cuviculo<?php echo $id_map;?>" value="<?php echo $nro_espacio; ?>">
+                                                                        </div>
+                                                                    </div>
 
 
 
@@ -198,57 +207,39 @@ foreach ($mapeos as $mapeo) {
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-        <button type="button" class="btn btn-primary" id="btn_registrar_ticket<?php echo $id_map;?>">Imprimir ticket</button>
+        <button type="button" class="btn btn-primary" id="btn_registrar_ticket<?php echo $id_map;?>">Imprimir ticket</button> 
         <script>
                                                                         $('#btn_registrar_ticket<?php echo $id_map;?>').click(function () {
-
-                                                                           var placa = $('#placa_buscar<?php echo $id_map;?>').val();
-                                                                           var nombre_cliente = $('#nombre_cliente<?php echo $id_map;?>').val();
-                                                                           var nit_ci = $('#nit_ci<?php echo $id_map;?>').val();
-                                                                           var fecha_ingreso = $('#fecha_ingreso<?php echo $id_map;?>').val();
-                                                                           var hora_ingreso = $('#hora_ingreso<?php echo $id_map;?>').val();
-                                                                           var cuviculo = $('#cuviculo<?php echo $id_map;?>').val();
-                                                                           var user_session = "<?php echo $usuario_sesion; ?>";
-
-
-                                                                           if(placa == ""){
+                                                                          var placa = $('#placa2_<?php echo $id_map;?>').val();
+                                                                          var nombre_cliente = $('#nombre_cliente<?php echo $id_map;?>').val();
+                                                                          var telefono = $('#telefono<?php echo $id_map;?>').val();
+                                                                          var fecha_ingreso = $('#fecha_ingreso<?php echo $id_map;?>').val();
+                                                                          var hora_ingreso = $('#hora_ingreso<?php echo $id_map;?>').val();
+                                                                          var cuviculo = $('#cuviculo<?php echo $id_map;?>').val();
+                                                                          
+                                                                          if(placa == ""){
                                                                               alert('Debe de llenar el campo Placa');
-                                                                               $('#placa_buscar<?php echo $id_map;?>').focus();
-                                                                           }else if(nombre_cliente == ""){
-                                                                                alert('Debe de llenar el campo nombre del cliente');
-                                                                               $('#nombre_cliente<?php echo $id_map;?>').focus();
-                                                                           }else if(nit_ci == ""){
-                                                                               alert('Debe de llenar el campo Nit/Ci');
-                                                                               $('#nit_ci<?php echo $id_map;?>').focus();
-                                                                           }
-                                                                           else{
-
-                                                                               var url_1 = 'control-cambiar.php';
+                                                                               $('#placa2_<?php echo $id_map;?>').focus();
+                                                                              }
+                                                                              else{
+                                                                                var url_1 = 'control-cambiar.php';
                                                                                $.get(url_1,{cuviculo:cuviculo},function (datos) {
                                                                                    $('#respuesta_ticket').html(datos);
+                                                                                   alert('Hecho');
                                                                                });
-
-                                                                               var url_2 = 'clientes/controller_registrar_clientes.php';
-                                                                               $.get(url_2,{nombre_cliente:nombre_cliente,nit_ci:nit_ci,placa:placa},function (datos) {
-                                                                                   $('#respuesta_ticket').html(datos);
-                                                                               });
-
-                                                                               var url_3 = 'tickets/controller_registrar_ticket.php';
-                                                                               $.get(url_3,{placa:placa,nombre_cliente:nombre_cliente,nit_ci:nit_ci,fecha_ingreso:fecha_ingreso,hora_ingreso:hora_ingreso,cuviculo:cuviculo,user_session:user_session},function (datos) {
-                                                                                   $('#respuesta_ticket').html(datos);
-                                                                               });
-
-
-                                                                           }
-
+                                                                              }
                                                                         });
                                                                     </script>
       </div>
+      <div id="respuesta_ticket">
+
+        </div>
     </div>
   </div>
 </div>  
             </center>
         </div>
+        
     <?php
     }
     if($estado_espacio == "OCUPADO"){ ?>

@@ -6,7 +6,7 @@
  * Time: 10:59
  */
 
-include('../app/config.php');
+include('../includes/config.php');
 
 $cuviculo = $_GET['cuviculo'];
 $estado_espacio = "OCUPADO";
