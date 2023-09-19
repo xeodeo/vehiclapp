@@ -29,8 +29,41 @@ echo $nombre_cliente." - ".$telefono_cliente;
 
 if($nombre_cliente == ""){
     echo "El cliente es nuevo";
+    ?>
+            <div class="form-group row">
+              <label for="" class="col-sm-3 col-form-label">Nombre:</label>
+              <div class="col-sm-7">
+                <input type="text" class="form-control">
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label for="" class="col-sm-3 col-form-label">Telefono:</label>
+              <div class="col-sm-7">
+                <input type="text" class="form-control">
+              </div>
+            </div>
+    <?php
 }else{
     echo "El cliente es antiguo";
+    ?>
+
+            <div class="form-group row">
+              <label for="" class="col-sm-3 col-form-label">Nombre:</label>
+              <div class="col-sm-7">
+                <input type="text" class="form-control" value="<?php echo $nombre_cliente;?>">
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label for="" class="col-sm-3 col-form-label">Telefono:</label>
+              <div class="col-sm-7">
+                <input type="text" class="form-control" value="<?php echo $telefono_cliente;?>">
+              </div>
+            </div>
+
+
+    <?php
 }
 
 
