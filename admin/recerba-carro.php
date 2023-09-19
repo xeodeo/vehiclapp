@@ -198,7 +198,51 @@ foreach ($mapeos as $mapeo) {
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-        <button type="button" class="btn btn-primary">Guardar</button>
+        <button type="button" class="btn btn-primary" id="btn_registrar_ticket<?php echo $id_map;?>">Imprimir ticket</button>
+        <script>
+                                                                        $('#btn_registrar_ticket<?php echo $id_map;?>').click(function () {
+
+                                                                           var placa = $('#placa_buscar<?php echo $id_map;?>').val();
+                                                                           var nombre_cliente = $('#nombre_cliente<?php echo $id_map;?>').val();
+                                                                           var nit_ci = $('#nit_ci<?php echo $id_map;?>').val();
+                                                                           var fecha_ingreso = $('#fecha_ingreso<?php echo $id_map;?>').val();
+                                                                           var hora_ingreso = $('#hora_ingreso<?php echo $id_map;?>').val();
+                                                                           var cuviculo = $('#cuviculo<?php echo $id_map;?>').val();
+                                                                           var user_session = "<?php echo $usuario_sesion; ?>";
+
+
+                                                                           if(placa == ""){
+                                                                              alert('Debe de llenar el campo Placa');
+                                                                               $('#placa_buscar<?php echo $id_map;?>').focus();
+                                                                           }else if(nombre_cliente == ""){
+                                                                                alert('Debe de llenar el campo nombre del cliente');
+                                                                               $('#nombre_cliente<?php echo $id_map;?>').focus();
+                                                                           }else if(nit_ci == ""){
+                                                                               alert('Debe de llenar el campo Nit/Ci');
+                                                                               $('#nit_ci<?php echo $id_map;?>').focus();
+                                                                           }
+                                                                           else{
+
+                                                                               var url_1 = 'control-cambiar.php';
+                                                                               $.get(url_1,{cuviculo:cuviculo},function (datos) {
+                                                                                   $('#respuesta_ticket').html(datos);
+                                                                               });
+
+                                                                               var url_2 = 'clientes/controller_registrar_clientes.php';
+                                                                               $.get(url_2,{nombre_cliente:nombre_cliente,nit_ci:nit_ci,placa:placa},function (datos) {
+                                                                                   $('#respuesta_ticket').html(datos);
+                                                                               });
+
+                                                                               var url_3 = 'tickets/controller_registrar_ticket.php';
+                                                                               $.get(url_3,{placa:placa,nombre_cliente:nombre_cliente,nit_ci:nit_ci,fecha_ingreso:fecha_ingreso,hora_ingreso:hora_ingreso,cuviculo:cuviculo,user_session:user_session},function (datos) {
+                                                                                   $('#respuesta_ticket').html(datos);
+                                                                               });
+
+
+                                                                           }
+
+                                                                        });
+                                                                    </script>
       </div>
     </div>
   </div>

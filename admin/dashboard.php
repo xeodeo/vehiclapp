@@ -10,10 +10,10 @@ if (strlen($_SESSION['vpmsaid']==0)) {
 
 <!doctype html>
 
- <html class="no-js" lang="">
+ <html class="no-js bg-dark" lang="">
 <head>
     
-    <title>VPMS - Admin Dashboard</title>
+    <title>Panel</title>
    
 
     <link rel="apple-touch-icon" href="https://i.imgur.com/QRAUqs9.png">
@@ -79,7 +79,7 @@ if (strlen($_SESSION['vpmsaid']==0)) {
         <?php include_once('includes/header.php');?>
       
         <!-- Content -->
-        <div class="content">
+        <div class="content bg-dark">
             <!-- Animated -->
             <div class="animated fadeIn">
                 <!-- Widgets  -->
@@ -92,7 +92,7 @@ if (strlen($_SESSION['vpmsaid']==0)) {
 $campos=mysqli_num_rows($query);
  ?>
                     <div class="col-lg-3 col-md-6">
-                        <div class="card">
+                        <div class="card bg-dark">
                             <div class="card-body">
                                 <div class="stat-widget-five">
                                     <div class="stat-icon dib flat-color-1">
@@ -114,7 +114,7 @@ $campos=mysqli_num_rows($query);
 $campos=mysqli_num_rows($query);
  ?>
                     <div class="col-lg-3 col-md-6">
-                        <div class="card">
+                        <div class="card bg-dark">
                             <div class="card-body">
                                 <div class="stat-widget-five">
                                     <div class="stat-icon dib flat-color-1">
@@ -137,7 +137,7 @@ $campos2=mysqli_num_rows($query);
  ?>
                     <div class="col-lg-3 col-md-6">
                         <div class="card">
-                            <div class="card-body">
+                            <div class="card-body bg-dark">
                                 <div class="stat-widget-five">
                                     <div class="stat-icon dib flat-color-1">
                                         <i class="pe-7s-user"></i>
@@ -161,7 +161,7 @@ $campos2=mysqli_num_rows($query);
 $regdusers=mysqli_num_rows($query);
  ?>
                     <div class="col-lg-3 col-md-6">
-                        <div class="card">
+                        <div class="card bg-dark">
                             <div class="card-body">
                                 <div class="stat-widget-five">
                                     <div class="stat-icon dib flat-color-1">
@@ -184,7 +184,7 @@ $regdusers=mysqli_num_rows($query);
 $listedcat=mysqli_num_rows($query);
  ?>
                     <div class="col-lg-3 col-md-6">
-                        <div class="card">
+                        <div class="card bg-dark" >
                             <div class="card-body">
                                 <div class="stat-widget-five">
                                     <div class="stat-icon dib flat-color-1">
