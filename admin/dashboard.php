@@ -10,10 +10,10 @@ if (strlen($_SESSION['vpmsaid']==0)) {
 
 <!doctype html>
 
- <html class="no-js bg-dark" lang="">
+ <html class="no-js" lang="">
 <head>
     
-    <title>Panel</title>
+    <title>VPMS - Admin Dashboard</title>
    
 
     <link rel="apple-touch-icon" href="https://i.imgur.com/QRAUqs9.png">
@@ -79,110 +79,89 @@ if (strlen($_SESSION['vpmsaid']==0)) {
         <?php include_once('includes/header.php');?>
       
         <!-- Content -->
-        <div class="content bg-dark">
+        <div class="content">
             <!-- Animated -->
             <div class="animated fadeIn">
                 <!-- Widgets  -->
                 <div class="row">
-                    <?php
-//todays Vehicle Entries
- $query=mysqli_query($con,"select ID from tblvehicle where date(InTime)=CURDATE();");
-$count_today_vehentries=mysqli_num_rows($query);
+                    
+
+                <?php
+//total Registered Users
+ $query=mysqli_query($con,"select id_map from tb_mapeos");
+$campos=mysqli_num_rows($query);
  ?>
                     <div class="col-lg-3 col-md-6">
-                        <div class="card bg-dark">
+                        <div class="card">
                             <div class="card-body">
                                 <div class="stat-widget-five">
                                     <div class="stat-icon dib flat-color-1">
-                                        <i class="pe-7s-car"></i>
+                                        <i class="pe-7s-user"></i>
                                     </div>
                                     <div class="stat-content">
                                         <div class="text-left dib">
-                                            <div class="stat-text"><span class="count"><?php echo $count_today_vehentries;?></span></div>
-                                            <div class="stat-heading">Entradas de vehículos de hoy</div>
+                                            <div class="stat-text"><span class="count"><?php echo $campos;?></span></div>
+                                            <div class="stat-heading">Total campos registrados</div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-
-                    <div class="col-lg-3 col-md-6">
-                        <?php
-//Yesterdays Vehicle Entrie
- $query1=mysqli_query($con,"select ID from tblvehicle where date(InTime)=CURDATE()-1;");
-$count_yesterday_vehentries=mysqli_num_rows($query1);
- ?>
-                        <div class="card bg-dark">
-                            <div class="card-body">
-                                <div class="stat-widget-five">
-                                    <div class="stat-icon dib flat-color-2">
-                                        <i class="pe-7s-car"></i>
-                                    </div>
-                                    <div class="stat-content">
-                                        <div class="text-left dib">
-                                            <div class="stat-text"><span class="count"><?php echo $count_yesterday_vehentries?></span></div>
-                                            <div class="stat-heading">Entradas de vehículos de ayer</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-3 col-md-6">
-                        <?php
-//Last Sevendays Vehicle Entries
- $query2=mysqli_query($con,"select ID from tblvehicle where date(InTime)>=(DATE(NOW()) - INTERVAL 7 DAY);");
-$count_lastsevendays_vehentries=mysqli_num_rows($query2);
- ?>
-                        <div class="card bg-dark">
-                            <div class="card-body">
-                                <div class="stat-widget-five">
-                                    <div class="stat-icon dib flat-color-3">
-                                        <i class="pe-7s-car"></i>
-                                    </div>
-                                    <div class="stat-content">
-                                        <div class="text-left dib">
-                                            <div class="stat-text"><span class="count"><?php echo $count_lastsevendays_vehentries?></span></div>
-                                            <div class="stat-heading">Entradas de vehículos de los últimos 7 días</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-3 col-md-6">
-                        <?php
-//Total Vehicle Entries
- $query3=mysqli_query($con,"select ID from tblvehicle");
-$count_total_vehentries=mysqli_num_rows($query3);
- ?>
-                        <div class="card bg-dark">
-                            <div class="card-body">
-                                <div class="stat-widget-five">
-                                    <div class="stat-icon dib flat-color-4">
-                                        <i class="pe-7s-car"></i>
-                                    </div>
-                                    <div class="stat-content">
-                                        <div class="text-left dib">
-                                            <div class="stat-text"><span class="count"><?php echo $count_total_vehentries?></span></div>
-                                            <div class="stat-heading">Entradas totales de vehículos</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-           <?php
+                    <?php
 //total Registered Users
- $query=mysqli_query($con,"select ID from tblregusers");
+ $query=mysqli_query($con,"select id_map from tb_mapeos where estado_espacio = 'LIBRE'");
+$campos=mysqli_num_rows($query);
+ ?>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="stat-widget-five">
+                                    <div class="stat-icon dib flat-color-1">
+                                        <i class="pe-7s-user"></i>
+                                    </div>
+                                    <div class="stat-content">
+                                        <div class="text-left dib">
+                                            <div class="stat-text"><span class="count"><?php echo $campos;?></span></div>
+                                            <div class="stat-heading">Total campos LIBRES</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <?php
+//total Registered Users
+ $query=mysqli_query($con,"select id_map from tb_mapeos where estado_espacio = 'OCUPADO'");
+$campos2=mysqli_num_rows($query);
+ ?>
+                    <div class="col-lg-3 col-md-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="stat-widget-five">
+                                    <div class="stat-icon dib flat-color-1">
+                                        <i class="pe-7s-user"></i>
+                                    </div>
+                                    <div class="stat-content">
+                                        <div class="text-left dib">
+                                            <div class="stat-text"><span class="count"><?php echo $campos2;?></span></div>
+                                            <div class="stat-heading">Total campos OCUPADOS</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                <?php
+//total Registered Users
+ $query=mysqli_query($con,"select ID from tblvehiculo");
 $regdusers=mysqli_num_rows($query);
  ?>
                     <div class="col-lg-3 col-md-6">
-                        <div class="card bg-dark">
+                        <div class="card">
                             <div class="card-body">
                                 <div class="stat-widget-five">
                                     <div class="stat-icon dib flat-color-1">
@@ -191,7 +170,7 @@ $regdusers=mysqli_num_rows($query);
                                     <div class="stat-content">
                                         <div class="text-left dib">
                                             <div class="stat-text"><span class="count"><?php echo $regdusers;?></span></div>
-                                            <div class="stat-heading">Total de usuarios registrados</div>
+                                            <div class="stat-heading">Total Vehiculos registrados</div>
                                         </div>
                                     </div>
                                 </div>
@@ -201,11 +180,11 @@ $regdusers=mysqli_num_rows($query);
 
            <?php
 //total Registered Users
- $query=mysqli_query($con,"select ID from tblcategory");
+ $query=mysqli_query($con,"select ID from tblcategoria");
 $listedcat=mysqli_num_rows($query);
  ?>
                     <div class="col-lg-3 col-md-6">
-                        <div class="card bg-dark">
+                        <div class="card">
                             <div class="card-body">
                                 <div class="stat-widget-five">
                                     <div class="stat-icon dib flat-color-1">
@@ -214,7 +193,7 @@ $listedcat=mysqli_num_rows($query);
                                     <div class="stat-content">
                                         <div class="text-left dib">
                                             <div class="stat-text"><span class="count"><?php echo $listedcat;?></span></div>
-                                            <div class="stat-heading">Categorías listadas</div>
+                                            <div class="stat-heading">Total de categorias</div>
                                         </div>
                                     </div>
                                 </div>
