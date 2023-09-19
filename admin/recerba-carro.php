@@ -207,29 +207,48 @@ foreach ($mapeos as $mapeo) {
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-        <button type="button" class="btn btn-primary" id="btn_registrar_ticket<?php echo $id_map;?>">Imprimir ticket</button> 
+        <button type="button" class="btn btn-primary" id="btn_registrar_ticket<?php echo $id_map;?>">ASIGNAR</button> 
         <script>
-                                                                        $('#btn_registrar_ticket<?php echo $id_map;?>').click(function () {
-                                                                          var placa = $('#placa2_<?php echo $id_map;?>').val();
-                                                                          var nombre_cliente = $('#nombre_cliente<?php echo $id_map;?>').val();
-                                                                          var telefono = $('#telefono<?php echo $id_map;?>').val();
-                                                                          var fecha_ingreso = $('#fecha_ingreso<?php echo $id_map;?>').val();
-                                                                          var hora_ingreso = $('#hora_ingreso<?php echo $id_map;?>').val();
-                                                                          var cuviculo = $('#cuviculo<?php echo $id_map;?>').val();
-                                                                          
-                                                                          if(placa == ""){
-                                                                              alert('Debe de llenar el campo Placa');
-                                                                               $('#placa2_<?php echo $id_map;?>').focus();
-                                                                              }
-                                                                              else{
-                                                                                var url_1 = 'control-cambiar.php';
-                                                                               $.get(url_1,{cuviculo:cuviculo},function (datos) {
-                                                                                   $('#respuesta_ticket').html(datos);
-                                                                                   alert('Hecho');
-                                                                               });
-                                                                              }
-                                                                        });
-                                                                    </script>
+$('#btn_registrar_ticket<?php echo $id_map;?>').click(function () {
+    var placa = $('#placa2_<?php echo $id_map;?>').val();
+    var nombre_cliente = $('#nombre_cliente<?php echo $id_map;?>').val();
+    var telefono = $('#telefono<?php echo $id_map;?>').val();
+    var fecha_ingreso = $('#fecha_ingreso<?php echo $id_map;?>').val();
+    var hora_ingreso = $('#hora_ingreso<?php echo $id_map;?>').val();
+    var cuviculo = $('#cuviculo<?php echo $id_map;?>').val();
+    
+    if (placa == "") {
+        alert('Debe llenar el campo Placa');
+        $('#placa2_<?php echo $id_map;?>').focus();
+    } else {
+        $.ajax({
+            type: "POST",
+            url: "controller_registrar_ticket.php", // Ruta al archivo PHP
+            data: {
+                placa: placa,
+                nombre_cliente: nombre_cliente,
+                telefono: telefono,
+                fecha_ingreso: fecha_ingreso,
+                hora_ingreso: hora_ingreso,
+                cuviculo: cuviculo
+            },
+            success: function (response) {
+                // Manejar la respuesta del servidor (puede ser un mensaje de éxito o error)
+                alert(response); // Mostrar la respuesta en una alerta (puedes cambiar esto)
+                
+                // Limpiar los campos después de guardar los datos
+                $("#placa2_<?php echo $id_map;?>").val("");
+                $("#nombre_cliente<?php echo $id_map;?>").val("");
+                $("#telefono<?php echo $id_map;?>").val("");
+                $("#fecha_ingreso<?php echo $id_map;?>").val("");
+                $("#hora_ingreso<?php echo $id_map;?>").val("");
+                $("#cuviculo<?php echo $id_map;?>").val("");
+            }
+        });
+    }
+});
+</script>
+
       </div>
       <div id="respuesta_ticket">
 
@@ -247,8 +266,7 @@ foreach ($mapeos as $mapeo) {
         <center>
             <h2><?php echo $nro_espacio;?></h2>
             <button class="btn btn-danger">
-            <img src="images/auto1.png" width="60px" alt="">
-            
+            <img src="images/auto1.png" width="60px" alt="">           
             </button>
             <p class="text-white"><?php echo $estado_espacio;?></p>
         </center>
