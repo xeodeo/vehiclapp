@@ -261,6 +261,7 @@ $('#btn_registrar_ticket<?php echo $id_map;?>').click(function () {
         });
     }
 });
+
 </script>
 
       </div>
@@ -279,48 +280,124 @@ $('#btn_registrar_ticket<?php echo $id_map;?>').click(function () {
         <div class="col">
         <center>
             <h2><?php echo $nro_espacio;?></h2>
-            <button type="button" class="btn btn-danger" style="width: 100%;height: 114px" data-toggle="modal" data-target="#modal2_<?php echo $id_map;?>">
+            <button type="button" class="btn btn-danger" id="btn_ocupado<?php echo $id_map;?>" style="width: 100%;height: 114px" data-toggle="modal" data-target="#modal2_<?php echo $id_map;?>">
             <img src="images/auto1.png" width="60px" alt="">
             </button>
             <p class="text-white"><?php echo $estado_espacio;?></p>
+            <?php
+            $query = "SELECT * FROM tb_tickets WHERE cuviculo = '$nro_espacio' AND estado = '1' ";
+            $result = mysqli_query($con, $query);
+            $datos_clientes = $result->fetch_all(MYSQLI_ASSOC);
+            foreach($datos_clientes as $datos_cliente){
+              $id_ticket = $datos_cliente['id_ticket'];
+              $placa_auto = $datos_cliente['placa_auto'];
+              $nombre_cliente = $datos_cliente['nombre_cliente'];
+              $telefono_cliente = $datos_cliente['telefono_cliente'];
+              $cuviculo = $datos_cliente['cuviculo'];
+              $fecha_ingreso = $datos_cliente['fecha_ingreso'];
+              $hora_ingreso = $datos_cliente['hora_ingreso'];
+              $user_sesion = $datos_cliente['user_sesion'];
+          }
+            
+            
+            ?>
             <!-- Button trigger modal -->
 
 <!-- Modal -->
 <div class="modal fade" id="modal2_<?php echo $id_map;?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
-    <div class="modal-content">
+    <div class="modal-content bg-dark">
       <div class="modal-header">
-        <h5 class="modal-title text-dark  " id="exampleModalLabel">Modal title</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
+        <h5 class="modal-title " id="exampleModalLabel">Vehiculo OCUPADO</h5>
       </div>
       <div class="modal-body">
-                <script>
-                  $('#modal2_<?php echo $id_map;?>').click(function(){
-                    var placa = $('#placa2_<?php echo $id_map;?>').val();
-                    var id_map = "<?php echo $id_map;?>";
+  
+      <div class="form-group row">
+        <label for="staticEmail" class="col-sm-4 col-form-label">Placa:</label>
+          <div class="col-sm-8">
+            <input type="text" class="form-control" value="<?php echo $placa_auto;?>" id="placa_buscar<?php echo $id_map;?>" disabled>
+          </div>
+      </div>
 
-                    if(placa == ""){
-                      alert("Tienes que llenar el campo placa");
-                      $('#placa2_<?php echo $id_map;?>').focus();
-                    } else{
-                      var url = 'controlador-buscar-cliente.php';
-                      $.get(url, {placa:placa,id_map:id_map}, function(datos){
-                        $('#respuesta_buscar_cliente<?php echo $id_map;?>').html(datos);
-                      });
-                    }
-                  });
-                </script>
+      <div class="form-group row">
+        <label for="staticEmail" class="col-sm-4 col-form-label">Nombre:</label>
+          <div class="col-sm-8">
+            <input type="text"  class="form-control" value="<?php echo $nombre_cliente;?>" id="nombre_cliente<?php echo $id_map;?>" disabled>
+          </div>
+      </div>
+      
+      <div class="form-group row">
+        <label for="staticEmail" class="col-sm-4 col-form-label">Telefono:</label>
+          <div class="col-sm-8">
+            <input type="text"  class="form-control" value="<?php echo $telefono_cliente;?>" id="telefono_cliente<?php echo $id_map;?>" disabled>
+          </div>
+      </div>
 
-                <div  id="respuesta_buscar_cliente<?php echo $id_map;?>">
+      <div class="form-group row">
+        <label for="staticEmail" class="col-sm-4 col-form-label">Dia de ingreso:</label>
+          <div class="col-sm-8">
+            <input type="text"  class="form-control" value="<?php echo $fecha_ingreso;?>" id="fecha_ingreso<?php echo $id_map;?>" disabled>
+          </div>
+      </div>
 
-                </div>
+      <div class="form-group row">
+        <label for="staticEmail" class="col-sm-4 col-form-label">Hora de ingreso:</label>
+          <div class="col-sm-8">
+            <input type="text"  class="form-control" value="<?php echo $hora_ingreso;?>" id="hora_ingreso<?php echo $id_map;?>" disabled>
+          </div>
+      </div>
 
+      <div class="form-group row">
+        <label for="staticEmail" class="col-sm-4 col-form-label">Cuvículo:</label>
+          <div class="col-sm-8">
+            <input type="text" class="form-control" value="<?php echo $cuviculo;?>" id="cuviculo_usado<?php echo $id_map;?>" disabled>
+          </div>
+      </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="button" class="btn btn-primary" id="btn_cobro<?php echo $id_map;?>">Save changes</button>
+        <script>
+
+$('#btn_cobro<?php echo $id_map;?>').click(function () {
+  alert("hola");
+  var cuviculo = $('#cuviculo_usado<?php echo $id_map;?>').val();
+  var placa2 = $('#placa_buscar<?php echo $id_map;?>').val();
+
+
+
+        $.ajax({
+            type: "POST",
+            url: "controller_cambio_cupo_libre.php", // Ruta al archivo PHP
+            data: {
+                cuviculo: cuviculo
+            },
+            success: function (response) {
+                // Manejar la respuesta del servidor (puede ser un mensaje de éxito o error)
+                alert(response); // Mostrar la respuesta en una alerta (puedes cambiar esto)
+                
+                // Limpiar los campos después de guardar los datos
+                $("#cuviculo_usado<?php echo $id_map;?>").val("");
+            }
+        });
+
+        $.ajax({
+            type: "POST",
+            url: "elimiar_de_ticket.php", // Ruta al archivo PHP
+            data: {
+                placa2: placa2
+            },
+            success: function (response) {
+                // Manejar la respuesta del servidor (puede ser un mensaje de éxito o error)
+                alert(response); // Mostrar la respuesta en una alerta (puedes cambiar esto)
+                
+                // Limpiar los campos después de guardar los datos
+                $("#cuviculo_usado<?php echo $id_map;?>").val("");
+            }
+        });
+    }
+);
+</script>
       </div>
     </div>
   </div>
