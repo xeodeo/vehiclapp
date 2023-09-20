@@ -129,7 +129,7 @@ foreach ($mapeos as $mapeo) {
                 <div class="form-group row">
                   <label for="" class="col-sm-3 col-form-label">Placa: <span><b style="color: red">*</b></span></label>
                   <div class="col-sm-6">
-                    <input type="text" id="placa2_<?php echo $id_map;?>" maxlength="6" class="form-control">
+                    <input type="text" id="placa3_<?php echo $id_map;?>" maxlength="6" class="form-control">
                   </div> 
                 </div>
                 <div class="form-group row">
@@ -263,7 +263,8 @@ foreach ($mapeos as $mapeo) {
         <button type="button" class="btn btn-primary" id="btn_registrar_ticket<?php echo $id_map;?>">ASIGNAR</button> 
         <script>
 $('#btn_registrar_ticket<?php echo $id_map;?>').click(function () {
-    var placa = $('#placa2_<?php echo $id_map;?>').val();
+    var placa = [$('#placa2_<?php echo $id_map;?>').val(),
+    $('#placa3_<?php echo $id_map;?>').val()];
     var nombre_cliente = $('#nombre_cliente<?php echo $id_map;?>').val();
     var telefono = $('#telefono<?php echo $id_map;?>').val();
     var fecha_ingreso = $('#fecha_ingreso<?php echo $id_map;?>').val();
@@ -409,7 +410,7 @@ $('#btn_registrar_ticket<?php echo $id_map;?>').click(function () {
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary" id="btn_cobro<?php echo $id_map;?>">Dar Salida</button>
+        <button type="button" class="btn btn-primary" id="btn_cobro<?php echo $id_map;?>">Dar</button>
         <script>
 
 $('#btn_cobro<?php echo $id_map;?>').click(function () {
