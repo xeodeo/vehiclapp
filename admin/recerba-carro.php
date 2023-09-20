@@ -125,10 +125,63 @@ foreach ($mapeos as $mapeo) {
                             </div> 
         <div id="opciones_visitante_<?php echo $id_map; ?>" class="opcion-container" style="display: none;">
             <div class="form-group text-white">
-                    <label>Documento</label>
-                    <input type="text" class="form-control">
-                    <label>Placa</label>
-                    <input type="text" id="placa_<?php echo $id_map;?>" maxlength="6" class="form-control">
+              <div class="modal-body">
+                <div class="form-group row">
+                  <label for="" class="col-sm-3 col-form-label">Placa: <span><b style="color: red">*</b></span></label>
+                  <div class="col-sm-6">
+                    <input type="text" id="placa2_<?php echo $id_map;?>" maxlength="6" class="form-control">
+                  </div> 
+                </div>
+                <div class="form-group row">
+              <label for="" class="col-sm-3 col-form-label">Nombre:</label>
+              <div class="col-sm-7">
+                <input type="text" class="form-control" id="nombre_cliente<?php echo $id_map;?>">
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label for="" class="col-sm-3 col-form-label">Telefono:</label>
+              <div class="col-sm-7">
+                <input type="text" class="form-control" id="telefono<?php echo $id_map;?>">
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label for="" class="col-sm-3 col-form-label">Fecha de entrada:</label>
+              <div class="col-sm-7">
+                <?php
+                date_default_timezone_set("America/caracas");
+                $fechaHora = date("Y-m-d h:i:s");
+                $dia = date('d');
+                $mes = date('m');
+                $ano = date('Y');
+                ?>
+                <input type="date" class="form-control" id="fecha_ingreso<?php echo $id_map;?>" value="<?php echo $ano."-".$mes."-".$dia;?>">
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label for="" class="col-sm-3 col-form-label">Hora de entrada:</label>
+              <div class="col-sm-7">
+                <?php
+                date_default_timezone_set("America/bogota");
+                $fechaHora = date("Y-m-d h:i:s");
+                $hora = date('h');
+                $minitos = date('i');
+                ?>
+                <input type="tine" class="form-control" id="hora_ingreso<?php echo $id_map;?>" value="<?php echo $hora.":".$minitos;?>">
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label for="staticEmail" class="col-sm-3 col-form-label">Cuvículo:</label>
+                <div class="col-sm-7">
+                  <input type="text" class="form-control" id="cuviculo<?php echo $id_map;?>" value="<?php echo $nro_espacio; ?>">
+                </div>
+            </div>
+            
+
+              </div>
             </div>
         </div>
         
@@ -194,11 +247,11 @@ foreach ($mapeos as $mapeo) {
             </div>
 
             <div class="form-group row">
-                                                                        <label for="staticEmail" class="col-sm-3 col-form-label">Cuvículo:</label>
-                                                                        <div class="col-sm-7">
-                                                                            <input type="text" class="form-control" id="cuviculo<?php echo $id_map;?>" value="<?php echo $nro_espacio; ?>">
-                                                                        </div>
-                                                                    </div>
+              <label for="staticEmail" class="col-sm-3 col-form-label">Cuvículo:</label>
+                <div class="col-sm-7">
+                  <input type="text" class="form-control" id="cuviculo<?php echo $id_map;?>" value="<?php echo $nro_espacio; ?>">
+                </div>
+            </div>
 
 
 
@@ -356,7 +409,7 @@ $('#btn_registrar_ticket<?php echo $id_map;?>').click(function () {
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary" id="btn_cobro<?php echo $id_map;?>">Save changes</button>
+        <button type="button" class="btn btn-primary" id="btn_cobro<?php echo $id_map;?>">Dar Salida</button>
         <script>
 
 $('#btn_cobro<?php echo $id_map;?>').click(function () {
