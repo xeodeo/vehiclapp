@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 15, 2023 at 03:57 PM
+-- Generation Time: Sep 20, 2023 at 02:51 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -61,10 +61,8 @@ CREATE TABLE `tblcategoria` (
 --
 
 INSERT INTO `tblcategoria` (`ID`, `TipoVehiculo`, `DiaCreacion`) VALUES
-(1, 'hola', '2023-09-14 13:17:35'),
-(2, 'Sikas', '2023-09-14 13:32:58'),
-(3, 'Sikas', '2023-09-14 13:33:15'),
-(4, 'moto', '2023-09-14 13:38:13');
+(4, 'moto', '2023-09-14 13:38:13'),
+(5, 'Carro', '2023-09-17 18:18:57');
 
 -- --------------------------------------------------------
 
@@ -81,6 +79,31 @@ CREATE TABLE `tblusuarios` (
   `Contraseña` varchar(250) NOT NULL,
   `DiaRegistro` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tblvehiculo`
+--
+
+CREATE TABLE `tblvehiculo` (
+  `ID` int(11) NOT NULL,
+  `Tipo` varchar(120) NOT NULL,
+  `Placa` varchar(120) NOT NULL,
+  `NombreDueño` varchar(120) NOT NULL,
+  `TelefonoDueño` bigint(10) NOT NULL,
+  `EmailDueño` varchar(200) NOT NULL,
+  `Documento` varchar(200) NOT NULL,
+  `DiaRegistro` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `estado` varchar(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `tblvehiculo`
+--
+
+INSERT INTO `tblvehiculo` (`ID`, `Tipo`, `Placa`, `NombreDueño`, `TelefonoDueño`, `EmailDueño`, `Documento`, `DiaRegistro`, `estado`) VALUES
+(6, 'Carro', 'SAD123', 'k¿sad', 213124, '2131232142', '', '2023-09-19 03:04:39', '1');
 
 -- --------------------------------------------------------
 
@@ -104,19 +127,34 @@ CREATE TABLE `tb_mapeos` (
 --
 
 INSERT INTO `tb_mapeos` (`id_map`, `nro_espacio`, `estado_espacio`, `obs`, `fyh_creacion`, `fyh_actualizacion`, `fyh_eliminacion`, `estado`) VALUES
-(8, '2', 'Sikass', '', '2023-09-15 08:01:53', NULL, NULL, '1'),
-(9, '1', 'LIBRE', '', '2023-09-15 08:25:20', NULL, NULL, '1'),
-(10, '3', 'LIBRE', '', '2023-09-15 08:25:23', NULL, NULL, '1'),
-(11, '4', 'OCUPADO', '', '2023-09-15 08:25:27', NULL, NULL, '1'),
-(12, '5', 'LIBRE', '', '2023-09-15 08:25:29', NULL, NULL, '1'),
-(13, '6', 'LIBRE', '', '2023-09-15 08:25:31', NULL, NULL, '1'),
-(14, '7', 'LIBRE', '', '2023-09-15 08:25:33', NULL, NULL, '1'),
-(15, '8', 'LIBRE', '', '2023-09-15 08:25:37', NULL, NULL, '1'),
-(16, '9', 'LIBRE', '', '2023-09-15 09:28:08', NULL, NULL, '1'),
-(17, '10', 'LIBRE', '', '2023-09-15 09:28:12', NULL, NULL, '1'),
-(18, '11', 'LIBRE', '', '2023-09-15 09:28:22', NULL, NULL, '1'),
-(19, '12', 'LIBRE', '', '2023-09-15 09:28:24', NULL, NULL, '1'),
-(20, '13', 'LIBRE', '', '2023-09-15 09:28:27', NULL, NULL, '1');
+(25, '1', 'LIBRE', '', '2023-09-18 01:18:42', '2023-09-20 07:47:51', NULL, '1'),
+(26, '2', 'LIBRE', '', '2023-09-18 02:28:59', '2023-09-20 01:19:06', NULL, '1'),
+(27, '3', 'LIBRE', '', '2023-09-18 02:30:16', '2023-09-19 10:59:52', NULL, '1'),
+(28, '4', 'LIBRE', '', '2023-09-18 04:27:11', '2023-09-19 11:19:23', NULL, '1'),
+(29, '5', 'LIBRE', '', '2023-09-19 15:08:30', '2023-09-19 10:39:54', NULL, '1');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tb_tickets`
+--
+
+CREATE TABLE `tb_tickets` (
+  `id_ticket` int(11) NOT NULL,
+  `placa_auto` varchar(255) DEFAULT NULL,
+  `nombre_cliente` varchar(255) DEFAULT NULL,
+  `telefono_cliente` varchar(255) DEFAULT NULL,
+  `cuviculo` varchar(255) DEFAULT NULL,
+  `fecha_ingreso` varchar(255) DEFAULT NULL,
+  `hora_ingreso` varchar(255) DEFAULT NULL,
+  `estado_ticket` varchar(255) DEFAULT NULL,
+  `user_sesion` varchar(255) DEFAULT NULL,
+  `fyh_creacion` datetime DEFAULT NULL,
+  `fyh_actualizacion` datetime DEFAULT NULL,
+  `fyh_eliminacion` datetime DEFAULT NULL,
+  `tipo` varchar(255) NOT NULL,
+  `estado` varchar(10) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Indexes for dumped tables
@@ -141,10 +179,22 @@ ALTER TABLE `tblusuarios`
   ADD PRIMARY KEY (`ID`);
 
 --
+-- Indexes for table `tblvehiculo`
+--
+ALTER TABLE `tblvehiculo`
+  ADD PRIMARY KEY (`ID`);
+
+--
 -- Indexes for table `tb_mapeos`
 --
 ALTER TABLE `tb_mapeos`
   ADD PRIMARY KEY (`id_map`);
+
+--
+-- Indexes for table `tb_tickets`
+--
+ALTER TABLE `tb_tickets`
+  ADD PRIMARY KEY (`id_ticket`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -160,7 +210,7 @@ ALTER TABLE `tbladmin`
 -- AUTO_INCREMENT for table `tblcategoria`
 --
 ALTER TABLE `tblcategoria`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `tblusuarios`
@@ -169,10 +219,22 @@ ALTER TABLE `tblusuarios`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `tblvehiculo`
+--
+ALTER TABLE `tblvehiculo`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
 -- AUTO_INCREMENT for table `tb_mapeos`
 --
 ALTER TABLE `tb_mapeos`
-  MODIFY `id_map` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id_map` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+
+--
+-- AUTO_INCREMENT for table `tb_tickets`
+--
+ALTER TABLE `tb_tickets`
+  MODIFY `id_ticket` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
