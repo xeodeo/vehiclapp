@@ -142,7 +142,7 @@ foreach ($mapeos as $mapeo) {
             <div class="form-group row">
               <label for="" class="col-sm-3 col-form-label">Telefono:</label>
               <div class="col-sm-7">
-                <input type="text" class="form-control" id="telefono2<?php echo $id_map;?>">
+                <input type="number" class="form-control" id="telefono2<?php echo $id_map;?>">
               </div>
             </div>
 
@@ -424,6 +424,42 @@ $('#btn_registrar_ticket<?php echo $id_map;?>').click(function () {
             <input type="text" class="form-control" value="<?php echo $cuviculo;?>" id="cuviculo_usado<?php echo $id_map;?>" disabled>
           </div>
       </div>
+      <div class="form-group row">
+    <label for="staticEmail" class="col-sm-4 col-form-label">Total a pagar:</label>
+    <div class="col-sm-8">
+        <?php
+        $hora_ingreso = $hora_ingreso;  
+        date_default_timezone_set("America/bogota");
+        $fechaHora = date("Y-m-d h:i:s");
+        $hora = date('h');
+        $minitos = date('i');
+        $dia = date('d');
+        $mes = date('m');
+        $ano = date('Y');
+
+        $dia_actual = $ano."-".$mes."-".$dia;
+        $dia_ingreso = $fecha_ingreso;
+        $hora_actual = $hora.":".$minitos; // Hora actual
+
+
+        // Convierte las horas a segundos para realizar el cálculo
+        $hora_ingreso_segundos = strtotime($hora_ingreso);
+        $hora_actual_segundos = strtotime($hora_actual);
+
+        // Calcula la diferencia en segundos
+        $diferencia_segundos = $hora_actual_segundos - $hora_ingreso_segundos;
+
+        // Calcula el costo por minuto (33.3333)
+        $costo_por_minuto = 33.3333;
+
+        // Calcula el total a pagar en función de la diferencia en segundos
+        $total_a_pagar = ($diferencia_segundos / 60) * $costo_por_minuto;
+
+        echo '<input type="text" class="form-control" id="totalPago' . $id_map . '" value="' . number_format($total_a_pagar, 2) . '" disabled>';
+        ?>
+    </div>
+</div>
+
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

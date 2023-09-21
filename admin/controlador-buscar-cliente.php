@@ -41,7 +41,7 @@ if($nombre_cliente == ""){
             <div class="form-group row">
               <label for="" class="col-sm-3 col-form-label">Telefono:</label>
               <div class="col-sm-7">
-                <input type="text" class="form-control" id="telefono<?php echo $id_map;?>">
+                <input type="number" class="form-control" id="telefono<?php echo $id_map;?>">
               </div>
             </div>
     <?php
