@@ -135,14 +135,14 @@ foreach ($mapeos as $mapeo) {
                 <div class="form-group row">
               <label for="" class="col-sm-3 col-form-label">Nombre:</label>
               <div class="col-sm-7">
-                <input type="text" class="form-control" id="nombre_cliente<?php echo $id_map;?>">
+                <input type="text" class="form-control" id="nombre_cliente2<?php echo $id_map;?>">
               </div>
             </div>
 
             <div class="form-group row">
               <label for="" class="col-sm-3 col-form-label">Telefono:</label>
               <div class="col-sm-7">
-                <input type="text" class="form-control" id="telefono<?php echo $id_map;?>">
+                <input type="text" class="form-control" id="telefono2<?php echo $id_map;?>">
               </div>
             </div>
 
@@ -264,9 +264,22 @@ foreach ($mapeos as $mapeo) {
         <script>
 $('#btn_registrar_ticket<?php echo $id_map;?>').click(function () {
     var placa = [$('#placa2_<?php echo $id_map;?>').val(),
-    $('#placa3_<?php echo $id_map;?>').val()];
-    var nombre_cliente = $('#nombre_cliente<?php echo $id_map;?>').val();
-    var telefono = $('#telefono<?php echo $id_map;?>').val();
+                $('#placa3_<?php echo $id_map;?>').val()];
+    var placaValida = placa.find(function(value) {
+    return value.trim() !== '';
+    });
+
+    var nombre_cliente = [$('#nombre_cliente2<?php echo $id_map;?>').val(), $('#nombre_cliente<?php echo $id_map;?>').val()];
+    var nombreValido = nombre_cliente.find(function(value2) {
+    return value2.trim() !== '';
+    });
+
+    var telefono = [$('#telefono2<?php echo $id_map;?>').val(), $('#telefono<?php echo $id_map;?>').val()];
+    var telefonoValido = telefono.find(function(value3) {
+    return value3.trim() !== '';
+    });
+
+    
     var fecha_ingreso = $('#fecha_ingreso<?php echo $id_map;?>').val();
     var hora_ingreso = $('#hora_ingreso<?php echo $id_map;?>').val();
     var cuviculo = $('#cuviculo<?php echo $id_map;?>').val();
@@ -279,9 +292,9 @@ $('#btn_registrar_ticket<?php echo $id_map;?>').click(function () {
             type: "POST",
             url: "controller_registrar_ticket.php", // Ruta al archivo PHP
             data: {
-                placa: placa,
-                nombre_cliente: nombre_cliente,
-                telefono: telefono,
+                placa: placaValida,
+                nombre_cliente: nombreValido,
+                telefono: telefonoValido,
                 fecha_ingreso: fecha_ingreso,
                 hora_ingreso: hora_ingreso,
                 cuviculo: cuviculo
@@ -528,7 +541,7 @@ $(document).ready(function() {
 
     // Validación de placa
     var alertaMostrada = false;
-    $("[id^='placa_" + id_map + "'], [id^='placa2_" + id_map + "']").on("blur", function () {
+    $("[id^='placa3_" + id_map + "'], [id^='placa2_" + id_map + "']").on("blur", function () {
       var placaInput = $(this).val().trim().toUpperCase();
       var placaPattern = /^[A-Z]{3}\d{3}$/;
 
@@ -540,7 +553,7 @@ $(document).ready(function() {
       }
     });
 
-    $("[id^='placa_" + id_map + "'], [id^='placa2_" + id_map + "']").on("input", function () {
+    $("[id^='placa3_" + id_map + "'], [id^='placa2_" + id_map + "']").on("input", function () {
       $(this).val($(this).val().toUpperCase());
 
       if (alertaMostrada) {
