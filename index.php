@@ -2,7 +2,7 @@
 <html lang="en">
     <head>
         
-        <title>Vehicle Parking Management System|| Home Page</title>
+        <title>Vehiclapp</title>
         
         <!-- Font Awesome icons (free version)-->
         <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
@@ -25,7 +25,7 @@
                     <ul class="navbar-nav ms-auto">
                     <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="#portfolio">Integrantes</a></li>
                         <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="admin/index.php">Admin</a></li>
-                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="users/login.php">Users</a></li>
+                        
                        
                     </ul>
                 </div>
@@ -78,7 +78,7 @@
             <div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
                 <div class="portfolio-item-caption-content text-center text-white"></div>
             </div>
-            <img class="img-fluid" src="admin/images/felipe.png" alt="..." />
+            <img class="img-fluid" src="https://www.techrepublic.com/wp-content/uploads/2017/06/incognitohero.jpg" alt="..." />
         </div>
     </div>
     <div class="col-md-6 col-lg-6 mb-5">
@@ -135,7 +135,7 @@
                             <div class="row justify-content-center">
                                 <div class="col-lg-8">
                                     <!-- Portfolio Modal - Title-->
-                                    <h2 class="portfolio-modal-title text-white text-uppercase mb-0">Tasty Cake</h2>
+                                    <h2 class="portfolio-modal-title text-white text-uppercase mb-0">Jherman Galeano</h2>
                                     <!-- Icon Divider-->
                                     <div class="divider-custom">
                                         <div class="divider-custom-line"></div>
@@ -167,7 +167,7 @@
                             <div class="row justify-content-center">
                                 <div class="col-lg-8">
                                     <!-- Portfolio Modal - Title-->
-                                    <h2 class="portfolio-modal-title text-white text-uppercase mb-0">Circus Tent</h2>
+                                    <h2 class="portfolio-modal-title text-white text-uppercase mb-0">Felipe Angarita</h2>
                                     <!-- Icon Divider-->
                                     <div class="divider-custom">
                                         <div class="divider-custom-line"></div>
@@ -175,7 +175,7 @@
                                         <div class="divider-custom-line"></div>
                                     </div>
                                     <!-- Portfolio Modal - Image-->
-                                    <img class="img-fluid rounded mb-5" src="admin/images/felipe.png" alt="..." />
+                                    <img class="img-fluid rounded mb-5" src="https://www.techrepublic.com/wp-content/uploads/2017/06/incognitohero.jpg" alt="..." />
                                     <!-- Portfolio Modal - Text-->
                                     <p class="mb-4 text-white">El tiene una personalidad que es conocida por su amor por la aventura y la espontaneidad. Siempre está dispuesto a probar cosas nuevas, explorar lugares desconocidos y buscar experiencias emocionantes. Es optimista y abierto a nuevas amistades y oportunidades. Es aventurero, suele disfrutar de trabajos que les permitan viajar y descubrir el mundo.</p>
                                     <button class="btn btn-secondary" data-bs-dismiss="modal">
@@ -199,7 +199,7 @@
                             <div class="row justify-content-center">
                                 <div class="col-lg-8">
                                     <!-- Portfolio Modal - Title-->
-                                    <h2 class="portfolio-modal-title text-white text-uppercase mb-0">Controller</h2>
+                                    <h2 class="portfolio-modal-title text-white text-uppercase mb-0">Kevin Pinto</h2>
                                     <!-- Icon Divider-->
                                     <div class="divider-custom">
                                         <div class="divider-custom-line"></div>
