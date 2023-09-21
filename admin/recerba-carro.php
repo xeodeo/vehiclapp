@@ -345,13 +345,7 @@ $('#btn_registrar_ticket<?php echo $id_map;?>').click(function () {
     }
     if($estado_espacio == "OCUPADO"){ ?>
         <div class="col">
-        <center>
-            <h2><?php echo $nro_espacio;?></h2>
-            <button type="button" class="btn btn-danger" id="btn_ocupado<?php echo $id_map;?>" style="width: 100%;height: 114px" data-toggle="modal" data-target="#modal2_<?php echo $id_map;?>">
-            <img src="images/auto1.png" width="60px" alt="">
-            </button>
-            <p class="text-white"><?php echo $estado_espacio;?></p>
-            <?php
+          <?php
             $query = "SELECT * FROM tb_tickets WHERE cuviculo = '$nro_espacio' AND estado = '1' ";
             $result = mysqli_query($con, $query);
             $datos_clientes = $result->fetch_all(MYSQLI_ASSOC);
@@ -368,6 +362,16 @@ $('#btn_registrar_ticket<?php echo $id_map;?>').click(function () {
             
             
             ?>
+        <center>
+            <h2><?php echo $nro_espacio;?></h2>
+            <button type="button" class="btn btn-danger" id="btn_ocupado<?php echo $id_map;?>" style="width: 100%;height: 114px" data-toggle="modal" data-target="#modal2_<?php echo $id_map;?>">
+            <img src="images/auto1.png" width="60px" alt="">
+            <b><?php echo $placa_auto;?></b>
+            </button>
+            <p class="text-white"><?php echo $estado_espacio;?> </p>
+            
+
+            
             <!-- Button trigger modal -->
 
 <!-- Modal -->
